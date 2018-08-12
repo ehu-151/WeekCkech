@@ -2,19 +2,38 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--カスタムテーマ-->
+    <style name="AppTheme.Default">
         <!--メインの色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryLight">@color/colorPrimaryLight</item>
-        <!--サブの色-->
-        <item name="colorSub">@color/colorSub</item>
-        <item name="colorSubLight">@color/colorSubLight</item>
-        <!--直線を引くとき-->
+        <!--<item name="colorPrimaryLight">@color/colorPrimaryLight</item>-->
+        <!--&lt;!&ndash;サブの色&ndash;&gt;-->
+        <!--<item name="colorSub">@color/colorSub</item>-->
+        <!--<item name="colorSubLight">@color/colorSubLight</item>-->
+        <!--直線を引くとき,TabLayoutのバー-->
         <item name="colorAccent">@color/colorAccent</item>
         <!--文字の色-->
-        <item name="colorChar">@color/colorChar</item>
-        <!--境界線の色-->
-        <item name="colorBorder">@color/colorBorder</item>
+        <!--<item name="colorChar">@color/colorChar</item>-->
+        <!--&lt;!&ndash;境界線の色&ndash;&gt;-->
+        <!--<item name="colorBorder">@color/colorBorder</item>-->
     </style>
-
+    <!--共通-->
+    <style name="TextApper">
+        <item name="android:textColor">@color/colorChar</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!--TabLayout-->
+    <style name="TextApper.TabLayout">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="tabSelectedTextColor">@color/colorChar</item>
+        <item name="tabTextColor">@color/colorCharDark</item>
+    </style>
 </resources>

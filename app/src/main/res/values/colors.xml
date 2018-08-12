@@ -11,6 +11,7 @@
     <color name="colorAccent">#FFFF8D</color>
     <!--文字の色-->
     <color name="colorChar">#FFFFFF</color>
+    <color name="colorCharDark">#CBCBCB</color>
     <!--境界線の色-->
     <color name="colorBorder">#707070</color>
 </resources>
