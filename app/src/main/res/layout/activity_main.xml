@@ -9,13 +9,11 @@
     <android.support.design.widget.TabLayout style="@style/TextApper.TabLayout">
 
         <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="TextApper.TabItem"
             android:text="@string/tab_day" />
 
         <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="TextApper.TabItem"
             android:text="@string/tab_week" />
     </android.support.design.widget.TabLayout>
 </android.support.constraint.ConstraintLayout>

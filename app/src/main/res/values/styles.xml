@@ -36,4 +36,9 @@
         <item name="tabSelectedTextColor">@color/colorChar</item>
         <item name="tabTextColor">@color/colorCharDark</item>
     </style>
+    <!--TabItem-->
+    <style name="TextApper.TabItem">
+
+    </style>
+
 </resources>
