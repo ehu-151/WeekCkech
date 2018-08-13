@@ -6,5 +6,6 @@
 
     <ListView
         style="@style/TextApper.listView.ListItem"
+
         tools:listheader="@layout/pager_day_listheader" />
 </android.support.constraint.ConstraintLayout>

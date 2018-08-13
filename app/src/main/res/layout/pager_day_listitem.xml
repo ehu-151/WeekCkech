@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/pager_day_listitem_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:rotation="0"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toEndOf="@+id/pager_day_listitem_checkbox"
+        app:srcCompat="@drawable/pager_listitem_boder" />
+</android.support.constraint.ConstraintLayout>
