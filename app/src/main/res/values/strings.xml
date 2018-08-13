@@ -2,4 +2,5 @@
     <string name="app_name">WeekCkech</string>
     <string name="tab_day">日</string>
     <string name="tab_week">週</string>
+    <string name="todo_title_init">title</string>
 </resources>

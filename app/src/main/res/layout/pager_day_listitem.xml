@@ -32,19 +32,16 @@
 
         <TextView
             android:id="@+id/pager_day_listitem_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            style="@style/TextApper.listView.ListItem.Title"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="title"
+            android:text="@string/todo_title_init"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/pager_day_listitem_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextApper.listView.ListItem.Detail"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
