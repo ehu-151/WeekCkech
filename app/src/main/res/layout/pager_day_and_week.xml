@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ListView
-        style="@style/TextApper.listView.ListItem"
-
+        style="@style/TextApper.listView"
+        tools:listitem="@layout/pager_day_listitem"
         tools:listheader="@layout/pager_day_listheader" />
 </android.support.constraint.ConstraintLayout>

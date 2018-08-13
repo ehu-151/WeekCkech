@@ -40,20 +40,23 @@
     </style>
     <!--TabItem-->
     <style name="TextApper.TabItem">
-
+        
     </style>
     <!--ListView-->
     <style name="TextApper.listView">
-
-    </style>
-    <!--ListItem-->
-    <style name="TextApper.listView.ListItem">
-
+        <item name="android:background">@color/colorSubLight</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:divider">@color/colorBorder</item>
+        <item name="android:dividerHeight">1dp</item>
     </style>
     <!--ListHeader-->
     <style name="TextApper.listView.ListHeader">
         <item name="android:background">@color/colorSub</item>
         <item name="android:text">Header</item>
         <item name="android:textSize">25sp</item>
+    </style>
+    <!--ListItem-->
+    <style name="TextApper.listView.ListItem">
+
     </style>
 </resources>
