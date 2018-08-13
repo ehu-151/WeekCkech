@@ -27,6 +27,7 @@
     <!--共通-->
     <style name="TextApper">
         <item name="android:textColor">@color/colorChar</item>
+        <item name="android:textSize">10sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/colorPrimaryLight</item>
@@ -41,5 +42,18 @@
     <style name="TextApper.TabItem">
 
     </style>
+    <!--ListView-->
+    <style name="TextApper.listView">
 
+    </style>
+    <!--ListItem-->
+    <style name="TextApper.listView.ListItem">
+
+    </style>
+    <!--ListHeader-->
+    <style name="TextApper.listView.ListHeader">
+        <item name="android:background">@color/colorSub</item>
+        <item name="android:text">Header</item>
+        <item name="android:textSize">25sp</item>
+    </style>
 </resources>
