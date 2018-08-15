@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ListView
         style="@style/TextApper.listView"
-        tools:listitem="@layout/pager_day_listitem"
-        tools:listheader="@layout/pager_day_listheader" />
+        tools:listheader="@layout/pager_day_listheader"
+        tools:listitem="@layout/pager_day_listitem" />
+
+    <android.support.constraint.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <android.support.constraint.Group
+        android:id="@+id/group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </android.support.constraint.ConstraintLayout>
