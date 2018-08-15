@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 
 
 class MainPagerWeekFragment : Fragment() {
@@ -15,6 +14,4 @@ class MainPagerWeekFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.pager_week, container, false)
     }
-
-
 }
