@@ -3,4 +3,6 @@
     <string name="tab_day">日</string>
     <string name="tab_week">週</string>
     <string name="todo_title_init">title</string>
+    <string name="day_of_week">曜</string>
+    <string name="planed_numder">予定数</string>
 </resources>
