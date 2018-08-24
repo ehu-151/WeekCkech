@@ -5,10 +5,12 @@ import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
 import java.util.*
 
 
-class PagerDayPresenter(dayListItemModel: DayListItemModel) :PagerDayConstract.Presenter{
+class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayConstract.Presenter {
 
     override fun showDaysTasks() {
-
+        var list = ArrayList<DayListItemModel>()
+        list.add(DayListItemModel(false, "タイトル1", "詳細1"))
+        pagerDayView.showDaysTasks(list)
     }
 
     override fun completeDaysTask() {
