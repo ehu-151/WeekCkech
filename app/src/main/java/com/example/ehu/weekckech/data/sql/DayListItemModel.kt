@@ -1,4 +1,4 @@
-package com.example.ehu.weekckech.model
+package com.example.ehu.weekckech.data.sql
 
 /**
  * 日ページのリストアイテムのDTO
