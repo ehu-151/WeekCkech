@@ -18,7 +18,12 @@ import com.example.ehu.weekckech.presenter.presenter.PagerDayPresenter
 import java.util.*
 import kotlin.collections.ArrayList
 
-
+/**
+ * PagerDayConstract.Viewの実装メソッドはPagerDayPresenterから呼ばれることを想定しています。
+ *
+ * ビューのクリックリスナーは基本的にこのクラスでセットしますが、ListViewのアダプターは例外です。
+ * アダプター内でクリックリスナーをセットしています。
+ */
 class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     // セットする変数の宣言
     override var presenter: PagerDayConstract.Presenter=PagerDayPresenter(this)
@@ -55,13 +60,6 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
         mContext = view.context
         // ListItemのセット
         listView = view.findViewById(R.id.listView)
-        // ListItemのClickListenerのセット
-
-        listView.setOnItemClickListener { adapterView, v, i, l ->
-            Toast.makeText(activity, "Toast", Toast.LENGTH_SHORT).show()
-        }
-
-
     }
 
 }

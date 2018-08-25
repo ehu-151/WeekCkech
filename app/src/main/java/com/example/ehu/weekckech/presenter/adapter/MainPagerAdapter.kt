@@ -6,8 +6,10 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.example.ehu.weekckech.view.fragment.MainPagerDayFragment
 import com.example.ehu.weekckech.view.fragment.MainPagerWeekFragment
 
+/**
+ * 遷移するFragmentを保持、管理、遷移するアダプタークラス
+ */
 class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
     override fun getItem(position: Int): Fragment? {
         return when (position) {
             0 -> MainPagerDayFragment()
