@@ -1,6 +1,8 @@
 package com.example.ehu.weekckech.presenter.adapter
 
 import android.content.Context
+import android.support.constraint.ConstraintLayout
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +45,11 @@ class TasksAdapter(
         holder.checkBox.isChecked=items[position].isChecked
         holder.title.text=items[position].title
         holder.detail.text=items[position].detail
+
+        // クリックアダプターのセット
+        v.findViewById<ConstraintLayout>(R.id.constraintLayout3).setOnClickListener {
+            Log.d("TAG_A",position.toString())
+        }
 
         return v as View
     }

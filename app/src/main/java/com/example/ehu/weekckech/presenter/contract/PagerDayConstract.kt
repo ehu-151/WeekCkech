@@ -14,7 +14,7 @@ interface PagerDayConstract {
 
     }
     interface Presenter:BasePresenter{
-        fun showDaysTasks()
+        fun loadDaysTasks()
         fun completeDaysTask()
         fun activateDaysTask()
         fun addNewDayTask()

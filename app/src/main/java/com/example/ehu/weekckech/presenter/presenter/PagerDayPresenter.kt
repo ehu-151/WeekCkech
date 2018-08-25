@@ -7,9 +7,14 @@ import java.util.*
 
 class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayConstract.Presenter {
 
-    override fun showDaysTasks() {
+    /**
+     * 全てのタスクを表示する
+     */
+    override fun loadDaysTasks() {
         var list = ArrayList<DayListItemModel>()
         list.add(DayListItemModel(false, "タイトル1", "詳細1"))
+        list.add(DayListItemModel(false, "タイトル2", "詳細2"))
+        list.add(DayListItemModel(false, "タイトル3", "詳細3"))
         pagerDayView.showDaysTasks(list)
     }
 
@@ -29,8 +34,13 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayCons
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    /**
+     * プレゼンターが初めにやること
+     *
+     * タスクのリロード
+     */
     override fun start() {
-        showDaysTasks()
+        loadDaysTasks()
     }
 
 }

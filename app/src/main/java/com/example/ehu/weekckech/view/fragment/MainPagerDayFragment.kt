@@ -20,18 +20,18 @@ import kotlin.collections.ArrayList
 
 
 class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
+    // セットする変数の宣言
     override var presenter: PagerDayConstract.Presenter=PagerDayPresenter(this)
     lateinit var listView:ListView
 
     private lateinit var mContext: Context
     override fun showDaysTasks(dayListItems:ArrayList<DayListItemModel>) {
-//        dayListItems.add(DayListItemModel(false, "タイトル1", "詳細1"))
-        var tasksAdapter = TasksAdapter(mContext, dayListItems)
-        listView.adapter = tasksAdapter
+        // セット
+        listView.adapter =  TasksAdapter(mContext, dayListItems)
     }
 
     override fun showAddEditTask() {
-        var temp = ""
+
     }
 
     override fun showDayTasks() {
@@ -51,12 +51,14 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Contextの格納
         mContext = view.context
         // ListItemのセット
         listView = view.findViewById(R.id.listView)
         // ListItemのClickListenerのセット
-        listView.onItemClickListener= AdapterView.OnItemClickListener { adapterView, view, pos, id ->
-            Toast.makeText(mContext,  Integer.toString(pos), Toast.LENGTH_SHORT).show()
+
+        listView.setOnItemClickListener { adapterView, v, i, l ->
+            Toast.makeText(activity, "Toast", Toast.LENGTH_SHORT).show()
         }
 
 
