@@ -1,16 +1,12 @@
-package com.example.ehu.weekckech
+package com.example.ehu.weekckech.presenter.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.example.ehu.weekckech.view.fragment.MainPagerDayFragment
+import com.example.ehu.weekckech.view.fragment.MainPagerWeekFragment
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
-    private val tabTitles = arrayOf<CharSequence>("タブ1", "タブ2")
-
-    override fun getPageTitle(position: Int): CharSequence? {
-        return tabTitles[position]
-    }
 
     override fun getItem(position: Int): Fragment? {
         return when (position) {
@@ -21,6 +17,6 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     }
 
     override fun getCount(): Int {
-        return tabTitles.size
+        return 2
     }
 }
