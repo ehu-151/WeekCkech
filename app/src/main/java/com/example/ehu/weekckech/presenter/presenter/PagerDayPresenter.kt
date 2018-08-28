@@ -16,7 +16,13 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayCons
         list.add(DayListItemModel(false, "タイトル2月", "詳細2","月"))
         list.add(DayListItemModel(false, "タイトル3月", "詳細3","月"))
         list.add(DayListItemModel(false, "タイトル4火", "詳細4","火"))
-        list.add(DayListItemModel(false, "タイトル5火", "詳細5","火"))
+        list.add(DayListItemModel(true, "タイトル5火", "詳細5","火"))
+        list.add(DayListItemModel(false, "タイトル6水", "詳細6","水"))
+        list.add(DayListItemModel(false, "タイトル7木", "詳細7","木"))
+        list.add(DayListItemModel(false, "タイトル8金", "詳細8","金"))
+        list.add(DayListItemModel(false, "タイトル9土", "詳細9","土"))
+        list.add(DayListItemModel(false, "タイトル10日", "詳細10","日"))
+        list.add(DayListItemModel(false, "タイトル11日", "詳細11","日"))
         pagerDayView.showDaysTasks(list)
     }
 

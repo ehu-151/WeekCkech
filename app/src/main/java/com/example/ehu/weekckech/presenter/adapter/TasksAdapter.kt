@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.DayListItemModel
+import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
 
 /**
  * MainPagerDayFragmentから呼ばれることを想定しています。
@@ -19,9 +20,55 @@ import com.example.ehu.weekckech.data.sql.DayListItemModel
  */
 class TasksAdapter(
         var context: Context, var rows: ArrayList<DayListItemModel>)
-    : BaseAdapter() {
+    : BaseAdapter(), StickyListHeadersAdapter {
+
     val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    var currentGroup: String = "日"
+    override fun getHeaderId(position: Int): Long {
+        return getHeaderItem(position).toLong()
+    }
+
+    /**
+     * weekGroupからGroupの数値を返します。
+     */
+    fun getHeaderItem(posion: Int): Int {
+        return when (rows[posion].weekGroup) {
+            "月" -> 0
+            "火" -> 1
+            "水" -> 2
+            "木" -> 3
+            "金" -> 4
+            "土" -> 5
+            "日" -> 6
+            else -> 7
+        }
+    }
+
+    override fun getHeaderView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        var v = convertView
+
+        // Headerとitemの条件分岐
+
+        // 前の日付グループと同じならlistitemの追加
+        v = inflater.inflate(R.layout.pager_day_listheader, null)
+        var holder = TasksAdapter.HeaderHolder(
+                v?.findViewById(R.id.header_title) as TextView,
+                v?.findViewById(R.id.header_imageView) as ImageView
+        )
+        // リサイクルするときのためにタグ付けしておく
+        v.tag = holder
+
+        // itemのセット
+        holder.headerName.text = rows[position].weekGroup
+
+        // クリックアダプターのセット
+        v.findViewById<ImageView>(R.id.header_imageView).setOnClickListener {
+            Log.d("setOnClickListener", "header_layout:" + getHeaderItem(position))
+        }
+
+        return v as View
+    }
+
+
     override fun getItem(p0: Int): Any {
         return rows[p0]
     }
@@ -44,10 +91,10 @@ class TasksAdapter(
 
         // 前の日付グループと同じならlistitemの追加
         v = inflater.inflate(R.layout.pager_day_listitem, null)
-        var holder = TasksAdapter.ItemHolder(
-                v?.findViewById(R.id.pager_day_listitem_checkbox) as CheckBox,
-                v?.findViewById(R.id.pager_day_listitem_title) as TextView,
-                v?.findViewById(R.id.pager_day_listitem_detail) as TextView
+        val holder = TasksAdapter.ItemHolder(
+                v.findViewById(R.id.pager_day_listitem_checkbox) as CheckBox,
+                v.findViewById(R.id.pager_day_listitem_title) as TextView,
+                v.findViewById(R.id.pager_day_listitem_detail) as TextView
         )
         // リサイクルするときのためにタグ付けしておく
         v.tag = holder
@@ -61,9 +108,6 @@ class TasksAdapter(
         v.findViewById<ConstraintLayout>(R.id.constraintLayout3).setOnClickListener {
             Log.d("setOnClickListener", "item_layout:" + position.toString())
         }
-
-
-        currentGroup = rows[position].weekGroup
 
         return v as View
     }

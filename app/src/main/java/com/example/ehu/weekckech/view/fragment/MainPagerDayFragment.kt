@@ -14,6 +14,7 @@ import com.example.ehu.weekckech.presenter.adapter.TasksAdapter
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
 import com.example.ehu.weekckech.presenter.presenter.PagerDayPresenter
 import kotlinx.android.synthetic.main.pager_day.view.*
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView
 import kotlin.collections.ArrayList
 
 /**
@@ -25,8 +26,8 @@ import kotlin.collections.ArrayList
 class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     // セットする変数の宣言
     override var presenter: PagerDayConstract.Presenter = PagerDayPresenter(this)
-    lateinit var listView: ListView
-    lateinit var listHader: ListView
+    lateinit var listView: StickyListHeadersListView
+
 
     private lateinit var mContext: Context
     override fun showDaysTasks(dayListItems: ArrayList<DayListItemModel>) {
@@ -58,7 +59,6 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
         mContext = view.context
         // ListViewのセット
         listView = view.findViewById(R.id.listView)
-        listHader = view.findViewById(R.id.listView)
     }
 
 }
