@@ -61,7 +61,7 @@ class TasksAdapter(
         holder.headerName.text = rows[position].weekGroup
 
         // クリックアダプターのセット
-        v.findViewById<ImageView>(R.id.header_imageView).setOnClickListener {
+        v.findViewById<ConstraintLayout>(R.id.header_imageView_clickspase).setOnClickListener {
             Log.d("setOnClickListener", "header_layout:" + getHeaderItem(position))
         }
 
