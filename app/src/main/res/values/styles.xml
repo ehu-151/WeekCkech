@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -31,6 +31,16 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/colorPrimaryLight</item>
+    </style>
+    <!--Toolbar-->
+    <style name="TextApper.BaseToolbar">
+        <item name="android:elevation">0dp</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:theme">?attr/actionBarTheme</item>
+        <item name="titleTextColor">@color/colorChar</item>
+    </style>
+    <style name="TextApper.BaseToolbar.TasksMainActivity">
+        <item name="android:background">@color/colorPrimary</item>
     </style>
     <!--TabLayout-->
     <style name="TextApper.TabLayout">
