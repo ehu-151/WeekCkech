@@ -8,6 +8,7 @@
     style="@style/TextApper.listView.ListHeader">
 
     <TextView
+        android:id="@+id/header_title"
         style="@style/TextApper.listView.ListHeader.Title"
         android:layout_width="wrap_content"
         android:layout_marginBottom="8dp"
@@ -19,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/header_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
