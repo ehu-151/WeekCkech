@@ -30,9 +30,6 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
 
     private lateinit var mContext: Context
     override fun showDaysTasks(dayListItems: ArrayList<DayListItemModel>) {
-        // セット
-//        val header = View.inflate(mContext, R.layout.pager_day_listheader, null)
-//        listView.addHeaderView(header, null, false)
         listView.adapter = TasksAdapter(mContext, dayListItems)
     }
 
