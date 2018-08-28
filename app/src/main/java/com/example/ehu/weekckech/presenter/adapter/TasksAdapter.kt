@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.DayListItemModel
+import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
+import com.example.ehu.weekckech.view.fragment.MainPagerDayFragment
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
 
 /**
@@ -19,7 +21,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
  * クリックリスナーをセットしています。
  */
 class TasksAdapter(
-        var context: Context, var rows: ArrayList<DayListItemModel>)
+        val context: Context, val rows: ArrayList<DayListItemModel>,val presenter: PagerDayConstract.Presenter)
     : BaseAdapter(), StickyListHeadersAdapter {
 
     val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -63,6 +65,7 @@ class TasksAdapter(
         // クリックアダプターのセット
         v.findViewById<ConstraintLayout>(R.id.header_imageView_clickspase).setOnClickListener {
             Log.d("setOnClickListener", "header_layout:" + getHeaderItem(position))
+            presenter.addNewDayTask()
         }
 
         return v as View

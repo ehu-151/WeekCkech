@@ -35,7 +35,7 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayCons
     }
 
     override fun addNewDayTask() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pagerDayView.showAddEditTask()
     }
 
     override fun clearCompleteTasks() {
