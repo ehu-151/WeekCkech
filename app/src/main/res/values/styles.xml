@@ -52,8 +52,11 @@
     <!--ListHeader-->
     <style name="TextApper.listView.ListHeader">
         <item name="android:background">@color/colorSub</item>
-        <item name="android:text">Header</item>
+    </style>
+    <!--ListHeader,Title-->
+    <style name="TextApper.listView.ListHeader.Title">
         <item name="android:textSize">25sp</item>
+        <item name="android:layout_width">10dp</item>
     </style>
     <!--ListItem-->
     <style name="TextApper.listView.ListItem">

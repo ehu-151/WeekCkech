@@ -12,9 +12,11 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayCons
      */
     override fun loadDaysTasks() {
         var list = ArrayList<DayListItemModel>()
-        list.add(DayListItemModel(false, "タイトル1", "詳細1"))
-        list.add(DayListItemModel(false, "タイトル2", "詳細2"))
-        list.add(DayListItemModel(false, "タイトル3", "詳細3"))
+        list.add(DayListItemModel(false, "タイトル1月", "詳細1","月"))
+        list.add(DayListItemModel(false, "タイトル2月", "詳細2","月"))
+        list.add(DayListItemModel(false, "タイトル3月", "詳細3","月"))
+        list.add(DayListItemModel(false, "タイトル4火", "詳細4","火"))
+        list.add(DayListItemModel(false, "タイトル5火", "詳細5","火"))
         pagerDayView.showDaysTasks(list)
     }
 
