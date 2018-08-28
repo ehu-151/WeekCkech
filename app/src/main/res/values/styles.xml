@@ -42,6 +42,9 @@
     <style name="TextApper.BaseToolbar.TasksMainActivity">
         <item name="android:background">@color/colorPrimary</item>
     </style>
+    <style name="TextApper.BaseToolbar.AddEditTaskActivity">
+        <item name="android:background">@color/colorSubLight</item>
+    </style>
     <!--TabLayout-->
     <style name="TextApper.TabLayout">
         <item name="android:background">@color/colorPrimary</item>
