@@ -11,7 +11,6 @@ interface PagerDayConstract {
         fun showDaysTasks(dayListItems:ArrayList<DayListItemModel>)
         fun showAddEditTask()
         fun showDayTasks()
-
     }
     interface Presenter:BasePresenter{
         fun loadDaysTasks()
