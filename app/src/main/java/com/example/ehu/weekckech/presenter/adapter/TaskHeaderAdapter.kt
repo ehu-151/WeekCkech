@@ -45,7 +45,7 @@ class TaskHeaderAdapter(var context: Context, var headerName: String)
     }
 
     override fun getCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return 1
     }
 
     // 表示するビューの型指定

@@ -3,9 +3,7 @@ package com.example.ehu.weekckech.view.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +13,7 @@ import com.example.ehu.weekckech.data.sql.DayListItemModel
 import com.example.ehu.weekckech.presenter.adapter.TasksAdapter
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
 import com.example.ehu.weekckech.presenter.presenter.PagerDayPresenter
-import java.util.*
+import kotlinx.android.synthetic.main.pager_day.view.*
 import kotlin.collections.ArrayList
 
 /**
@@ -26,13 +24,16 @@ import kotlin.collections.ArrayList
  */
 class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     // セットする変数の宣言
-    override var presenter: PagerDayConstract.Presenter=PagerDayPresenter(this)
-    lateinit var listView:ListView
+    override var presenter: PagerDayConstract.Presenter = PagerDayPresenter(this)
+    lateinit var listView: ListView
+    lateinit var listHader: ListView
 
     private lateinit var mContext: Context
-    override fun showDaysTasks(dayListItems:ArrayList<DayListItemModel>) {
+    override fun showDaysTasks(dayListItems: ArrayList<DayListItemModel>) {
         // セット
-        listView.adapter =  TasksAdapter(mContext, dayListItems)
+//        val header = View.inflate(mContext, R.layout.pager_day_listheader, null)
+//        listView.addHeaderView(header, null, false)
+        listView.adapter = TasksAdapter(mContext, dayListItems)
     }
 
     override fun showAddEditTask() {
@@ -58,8 +59,9 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
         super.onViewCreated(view, savedInstanceState)
         // Contextの格納
         mContext = view.context
-        // ListItemのセット
+        // ListViewのセット
         listView = view.findViewById(R.id.listView)
+        listHader = view.findViewById(R.id.listView)
     }
 
 }
