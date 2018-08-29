@@ -95,4 +95,22 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
     </style>
 
+    <!--AddEditTaskActivity-->
+    <!--ListView-->
+    <style name="TextApper.listViewAddEditTaskActivity">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:divider">@color/colorBorder</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+    <!--ListItem-->
+    <style name="TextApper.listViewAddEditTaskActivity.ListItem">
+
+    </style>
+    <!--ListItem,Title-->
+    <style name="TextApper.listViewAddEditTaskActivity.ListItem.Title">
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+
 </resources>
