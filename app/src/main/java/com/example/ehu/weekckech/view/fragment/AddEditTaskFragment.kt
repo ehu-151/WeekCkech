@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ListView
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
+import com.example.ehu.weekckech.presenter.adapter.AddEditTasksListitemAdapter
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
 
@@ -30,10 +31,12 @@ class AddEditTaskFragment : Fragment() ,AddEditTaskContract.View{
         mContext = view.context
         // ListViewのセット
         listView = view.findViewById(R.id.listView)
+
+        presenter.start()
     }
 
     override fun showTaskConfigEditRow(listItemModel:ArrayList<AddEditTaskItemModel>) {
-//        listView.adapter=
+        listView.adapter= AddEditTasksListitemAdapter(mContext,listItemModel,presenter)
     }
 
     override fun showTasksMain() {

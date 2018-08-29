@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/editText"
             style="@style/TextApper.listView.ListItem.HorizontalText"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
@@ -40,7 +40,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/planed_numder"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/editText"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
