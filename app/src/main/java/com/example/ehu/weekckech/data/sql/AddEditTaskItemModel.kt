@@ -1,6 +1,15 @@
 package com.example.ehu.weekckech.data.sql
 
-import android.support.v4.widget.TextViewCompat
-import java.util.ArrayList
+import java.util.*
 
-data class AddEditTaskItemModel(val imageId:Int, val hintText:String="Title", val textType:String, val spinnerItem: ArrayList<String>?=null)
+/**
+ * @constructor AddEditTaskPresenterで扱うListitemのModel
+ * @property [imageId] itemに表示するリソースidです。
+ * @property [componentType] AddEditTaskItemModelのcompanion objectを使用して
+ */
+data class AddEditTaskItemModel(val imageId: Int, val componentType: Int, val hintText: String = "Title", val spinnerItem: ArrayList<String>? = null) {
+    companion object {
+        const val TEXTVIEW: Int = 0
+        const val SPINNER: Int = 1
+    }
+}
