@@ -17,7 +17,6 @@ import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
 class AddEditTaskFragment : Fragment() ,AddEditTaskContract.View{
     lateinit var mContext:Context
     lateinit var listView:ListView
-
     override var presenter: AddEditTaskContract.Presenter = AddEditTaskPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +33,7 @@ class AddEditTaskFragment : Fragment() ,AddEditTaskContract.View{
     }
 
     override fun showTaskConfigEditRow(listItemModel:ArrayList<AddEditTaskItemModel>) {
-
+//        listView.adapter=
     }
 
     override fun showTasksMain() {
