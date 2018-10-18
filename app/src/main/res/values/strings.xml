@@ -6,4 +6,6 @@
     <string name="day_of_week">曜</string>
     <string name="planed_numder">予定数</string>
     <string name="edit_activity_title">編集</string>
+    <string name="edit_save_button">保存する</string>
+    <string name="edot_leave_button">やめる</string>
 </resources>

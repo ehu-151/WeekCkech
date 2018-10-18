@@ -9,5 +9,34 @@
     <ListView
         android:id="@+id/listView"
         style="@style/TextApper.listViewAddEditTaskActivity"
-        tools:listitem="@layout/add_edit_task_listitem_textview" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/add_edit_task_listitem_textview">
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView">
+
+        <Button
+            android:id="@+id/edit_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/edit_save_button" />
+
+        <Button
+            android:id="@+id/edit_leave_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/edot_leave_button" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
