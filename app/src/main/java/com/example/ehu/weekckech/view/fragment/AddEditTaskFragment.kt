@@ -40,8 +40,8 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         saveButton = view.findViewById(R.id.edit_save_button)
         leaveButton = view.findViewById(R.id.edit_leave_button)
         // clickadapter
-        saveButton.setOnClickListener { Log.v(TAG, "clicked") }
-        leaveButton.setOnClickListener { Log.v(TAG, "clicked") }
+        saveButton.setOnClickListener { presenter.saveTask() }
+        leaveButton.setOnClickListener { showTasksMain() }
 
         presenter.start()
     }
@@ -51,6 +51,6 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     }
 
     override fun showTasksMain() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        activity?.finish()
     }
 }
