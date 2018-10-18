@@ -105,12 +105,16 @@
     </style>
     <!--ListItem-->
     <style name="TextApper.listViewAddEditTaskActivity.ListItem">
-
+        <item name="android:textSize">15sp</item>
     </style>
     <!--ListItem,Title-->
     <style name="TextApper.listViewAddEditTaskActivity.ListItem.Title">
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColorHint">@color/colorCharDark</item>
+    </style>
+    <!--SpinnerItem-->
+    <style name="TextApper.listViewAddEditTaskActivity.ListItem.SpinnerItem">
+        <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
 
