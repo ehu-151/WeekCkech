@@ -9,7 +9,8 @@ import java.util.*
  */
 data class AddEditTaskItemModel(val layoutid: Int, val imageId: Int, val componentType: Int, val hintText: String = "Title", val spinnerItem: ArrayList<String>? = null) {
     companion object {
-        const val TEXTVIEW: Int = 0
+        const val EDITTEXT: Int = 0
         const val SPINNER: Int = 1
+        const val TEXTVIEW: Int = 2
     }
 }

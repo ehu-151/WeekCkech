@@ -21,7 +21,7 @@ class AddEditTasksListitemAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var v = convertView
         when (rows[position].componentType) {
-            AddEditTaskItemModel.TEXTVIEW -> {
+            AddEditTaskItemModel.EDITTEXT -> {
                 v = getViewTextView(position, convertView, parent)
             }
             AddEditTaskItemModel.SPINNER -> {

@@ -30,12 +30,12 @@
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editText"
+        <TextView
+            android:id="@+id/textView"
             style="@style/TextApper.listViewAddEditTaskActivity.ListItem.Title"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="@string/todo_title_init"
+            android:text="12:00"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
