@@ -23,6 +23,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     lateinit var detail:String
     lateinit var limitTime:String
     lateinit var notificationTime:String
+    lateinit var weekGroup:String
     lateinit var saveButton: Button
     lateinit var leaveButton: Button
     override var presenter: AddEditTaskContract.Presenter = AddEditTaskPresenter(this)
