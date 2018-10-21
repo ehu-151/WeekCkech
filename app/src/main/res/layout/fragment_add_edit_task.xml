@@ -15,19 +15,19 @@
         tools:layout_editor_absoluteX="8dp">
 
         <include
-            layout="@layout/add_edit_task_listitem_textview"
+            layout="@layout/add_edit_task_listitem_edittext"
             android:id="@+id/edit_include_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <include
-            layout="@layout/add_edit_task_listitem_textview"
+            layout="@layout/add_edit_task_listitem_edittext"
             android:id="@+id/edit_include_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <include
-            layout="@layout/add_edit_task_listitem_textview"
+            layout="@layout/add_edit_task_listitem_edittext"
             android:id="@+id/edit_include_limittime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
