@@ -6,15 +6,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimaryLight">
 
-    <ListView
-        android:id="@+id/listView"
-        style="@style/TextApper.listViewAddEditTaskActivity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/add_edit_task_listitem_textview">
+        tools:layout_editor_absoluteX="8dp">
 
-    </ListView>
+        <include
+            layout="@layout/add_edit_task_listitem_textview"
+            android:id="@+id/edit_include_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            layout="@layout/add_edit_task_listitem_textview"
+            android:id="@+id/edit_include_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            layout="@layout/add_edit_task_listitem_textview"
+            android:id="@+id/edit_include_limittime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            layout="@layout/add_edit_task_listitem_spinner"
+            android:id="@+id/edit_include_notificationtime"
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -23,7 +46,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
             android:id="@+id/edit_save_button"
@@ -39,4 +62,5 @@
             android:layout_weight="1"
             android:text="@string/edot_leave_button" />
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

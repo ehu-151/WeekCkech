@@ -7,13 +7,13 @@ import java.util.*
 
 class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddEditTaskContract.Presenter {
     override fun loadTaskConfigEditRow() {
-        var list = ArrayList<AddEditTaskItemModel>()
+        var lists = java.util.ArrayList<AddEditTaskItemModel>()
         val model = AddEditTaskItemModel
-        list.add(AddEditTaskItemModel(R.drawable.ic_title_white_24dp, model.TEXTVIEW, "タイトル"))
-        list.add(AddEditTaskItemModel(R.drawable.ic_notes_white_24dp, model.TEXTVIEW, "詳細"))
-        list.add(AddEditTaskItemModel(R.drawable.ic_access_time_white_24dp, model.TEXTVIEW, "期限"))
-        list.add(AddEditTaskItemModel(R.drawable.ic_notifications_white_24dp, model.SPINNER, "通知時間", spinnerItem = arrayListOf("1H前", "2H前", "12時")))
-        addEditTaskView.showTaskConfigEditRow(list)
+        lists.add(AddEditTaskItemModel(R.id.edit_include_title,R.drawable.ic_title_white_24dp, model.TEXTVIEW, "タイトル"))
+        lists.add(AddEditTaskItemModel(R.id.edit_include_detail,R.drawable.ic_notes_white_24dp, model.TEXTVIEW, "詳細"))
+        lists.add(AddEditTaskItemModel(R.id.edit_include_limittime,R.drawable.ic_access_time_white_24dp, model.TEXTVIEW, "期限"))
+        lists.add(AddEditTaskItemModel(R.id.edit_include_notificationtime,R.drawable.ic_notifications_white_24dp, model.SPINNER, "通知時間", spinnerItem = arrayListOf("1H前", "2H前", "12時")))
+        addEditTaskView.showTaskConfigEditRow(lists)
     }
 
     override fun saveTask() {

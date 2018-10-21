@@ -43,7 +43,7 @@ class AddEditTasksListitemAdapter(
 
         // itemのセット
         holder.imageView.setImageResource(rows[position].imageId)
-        holder.title.hint = rows[position].hintText
+        holder.editText.hint = rows[position].hintText
 
         return v as View
     }
@@ -88,7 +88,7 @@ class AddEditTasksListitemAdapter(
 
     class ItemHolderTextView(
             var imageView: ImageView,
-            var title: EditText
+            var editText: EditText
     )
 
     class ItemHolderSpinner(
