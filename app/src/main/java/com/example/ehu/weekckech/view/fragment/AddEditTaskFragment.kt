@@ -5,8 +5,6 @@ import android.content.Context
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -84,7 +82,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                 adapter.addAll(list.spinnerItem)
                 layout.findViewById<Spinner>(R.id.spinner).adapter = adapter
             } else if (list.componentType == model.TEXTVIEW) {
-//                layout.findViewById<TextView>(R.id.textView).text = ""
+                layout.findViewById<TextView>(R.id.textView).text = list.text
             }
         }
 
