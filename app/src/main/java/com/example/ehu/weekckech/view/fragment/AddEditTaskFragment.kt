@@ -111,6 +111,13 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         leaveButton.setOnClickListener { showTasksMain() }
 
         presenter.start()
+//        val sharedElementEnterTransition = activity?.getWindow()?.getSharedElementEnterTransition()
+//        sharedElementEnterTransition?.addListener(object : TransitionListenerAdapter() {
+//            override fun onTransitionEnd(transition: Transition) {
+//                super.onTransitionEnd(transition)
+//                Log.d(TAG,"onTransitionEnd")
+//            }
+//        })
     }
 
     override fun setTaskConfigEditRow(lists: ArrayList<AddEditTaskItemModel>) {
@@ -140,11 +147,16 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         activity?.finish()
     }
 
-    override fun onPause() {
-        super.onPause()
-        showKeybord()
-    }
+    //    override fun onActivityCreated() {
+//        super.onActivityCreated()
+//        showKeybord()
+//    }
     override fun onDestroy() {
         super.onDestroy()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        showKeybord()
     }
 }
