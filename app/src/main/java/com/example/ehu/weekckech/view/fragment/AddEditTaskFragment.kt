@@ -153,6 +153,17 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
 //    }
     override fun onDestroy() {
         super.onDestroy()
+        hideKeybord()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        hideKeybord()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showKeybord()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
