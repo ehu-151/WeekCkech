@@ -1,10 +1,15 @@
 package com.example.ehu.weekckech.view.fragment
 
 
+import android.app.Dialog
+import android.app.DialogFragment
+import android.app.TimePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +19,37 @@ import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
+import java.util.*
 
 
 class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
+    private fun showTimePicker() {
+        class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
+
+            override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+                // Use the current time as the default values for the picker
+                val c = Calendar.getInstance()
+                val hour = c.get(Calendar.HOUR_OF_DAY)
+                val minute = c.get(Calendar.MINUTE)
+
+
+                // Create a new instance of TimePickerDialog and return it
+                return TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
+            }
+
+            override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
+                setLimitTime("$hourOfDay:$minute")
+            }
+        }
+
+        TimePickerFragment().show((activity as FragmentActivity).fragmentManager, "TAG")
+    }
+
+
+    fun setLimitTime(limitTime: String) {
+        limitTimeLayout.findViewById<TextView>(R.id.textView).text = limitTime
+    }
+
     val TAG = "AddEditTaskFragment"
     lateinit var mContext: Context
     lateinit var mView: View
@@ -53,20 +86,23 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             // 値の取得
             val title = titleLayout.findViewById<EditText>(R.id.editText).text.toString()
             val detail = detailLayout.findViewById<EditText>(R.id.editText).text.toString()
-            val limitTime=limitTimeLayout.findViewById<TextView>(R.id.textView).text.toString()
-            val notificationTime=notificationTimeLayout.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
-            val weekGroup=weekGroupLayout.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
+            val limitTime = limitTimeLayout.findViewById<TextView>(R.id.textView).text.toString()
+            val notificationTime = notificationTimeLayout.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
+            val weekGroup = weekGroupLayout.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
 
-            presenter.saveTask(TaskDataModel(title = title,detail = detail,limitDate = limitTime,
-                    notificationTime = notificationTime,weekGroup = weekGroup))
-
+            presenter.saveTask(TaskDataModel(title = title, detail = detail, limitDate = limitTime,
+                    notificationTime = notificationTime, weekGroup = weekGroup))
+        }
+        // OnClickのTimePicker
+        limitTimeLayout.findViewById<TextView>(R.id.textView).setOnClickListener {
+            showTimePicker()
         }
         leaveButton.setOnClickListener { showTasksMain() }
 
         presenter.start()
     }
 
-    override fun showTaskConfigEditRow(lists: ArrayList<AddEditTaskItemModel>) {
+    override fun setTaskConfigEditRow(lists: ArrayList<AddEditTaskItemModel>) {
         for (list in lists) {
             val model = AddEditTaskItemModel
             var layout: ConstraintLayout = mView.findViewById(list.layoutid)

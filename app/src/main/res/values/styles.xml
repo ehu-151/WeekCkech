@@ -9,7 +9,7 @@
     </style>
 
     <!--カスタムテーマ-->
-    <style name="AppTheme.Default">
+    <style name="AppTheme.Default" parent="AppTheme">
         <!--メインの色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -23,6 +23,10 @@
         <!--<item name="colorChar">@color/colorChar</item>-->
         <!--&lt;!&ndash;境界線の色&ndash;&gt;-->
         <!--<item name="colorBorder">@color/colorBorder</item>-->
+        <item name="android:timePickerDialogTheme">@style/TimePickerDialogTheme</item>
+    </style>
+    <style name="TimePickerDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item> <!-- colorAccent here seems to work just fine? -->
     </style>
     <!--共通-->
     <style name="TextApper">

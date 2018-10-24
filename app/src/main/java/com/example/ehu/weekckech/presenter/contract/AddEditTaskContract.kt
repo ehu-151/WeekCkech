@@ -6,11 +6,12 @@ import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 
 interface AddEditTaskContract {
-    interface View: BaseView<AddEditTaskContract.Presenter> {
-        fun showTaskConfigEditRow(listItemModel:ArrayList<AddEditTaskItemModel>)
+    interface View : BaseView<AddEditTaskContract.Presenter> {
+        fun setTaskConfigEditRow(listItemModel: ArrayList<AddEditTaskItemModel>)
         fun showTasksMain()
     }
-    interface Presenter: BasePresenter {
+
+    interface Presenter : BasePresenter {
         fun saveTask(taskDataModel: TaskDataModel)
         fun loadTaskConfigEditRow()
         fun getEditTaskData()
