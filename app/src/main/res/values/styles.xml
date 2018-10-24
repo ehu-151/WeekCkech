@@ -102,7 +102,7 @@
     <!--AddEditTaskActivity-->
     <!--ListView-->
     <style name="TextApper.listViewAddEditTaskActivity">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimary</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:divider">@color/colorBorder</item>
         <item name="android:dividerHeight">1dp</item>
@@ -118,7 +118,7 @@
     </style>
     <!--SpinnerItem-->
     <style name="TextApper.listViewAddEditTaskActivity.ListItem.SpinnerItem">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
 

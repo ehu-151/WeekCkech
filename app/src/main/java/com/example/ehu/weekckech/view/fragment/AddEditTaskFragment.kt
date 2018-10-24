@@ -13,6 +13,7 @@ import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
@@ -23,6 +24,16 @@ import java.util.*
 
 
 class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
+    override fun hideKeybord() {
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+    }
+
+    override fun showKeybord() {
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+    }
+
     private fun showTimePicker() {
         class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
 
@@ -125,7 +136,15 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     }
 
     override fun showTasksMain() {
+        hideKeybord()
         activity?.finish()
     }
 
+    override fun onPause() {
+        super.onPause()
+        showKeybord()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }
