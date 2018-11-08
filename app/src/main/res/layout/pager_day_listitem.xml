@@ -31,25 +31,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/pager_day_listitem_title"
-            style="@style/TextApper.listView.ListItem.Title"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/todo_title_init"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/pager_day_listitem_detail"
             style="@style/TextApper.listView.ListItem.Detail"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="You type TODO detail on here."
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/no_detail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pager_day_listitem_title" />
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
     <ImageView
