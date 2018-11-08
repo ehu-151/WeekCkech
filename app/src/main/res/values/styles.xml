@@ -111,6 +111,9 @@
     <style name="TextApper.listViewAddEditTaskActivity.ListItem">
         <item name="android:textSize">15sp</item>
     </style>
+    <style name="TextApper.listViewAddEditTaskActivity.ListItem.Parent">
+        <item name="android:textSize">15sp</item>
+    </style>
     <!--ListItem,Title-->
     <style name="TextApper.listViewAddEditTaskActivity.ListItem.Title">
         <item name="android:layout_width">match_parent</item>

@@ -11,11 +11,13 @@ interface AddEditTaskContract {
         fun showTasksMain()
         fun showKeybord()
         fun hideKeybord()
+        fun showTimePicker()
     }
 
     interface Presenter : BasePresenter {
         fun saveTask(taskDataModel: TaskDataModel)
         fun loadTaskConfigEditRow()
         fun getEditTaskData()
+        fun enterTimePicker()
     }
 }

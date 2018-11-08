@@ -22,19 +22,22 @@ class AddEditTasksListitemAdapter(
         var v = convertView
         when (rows[position].componentType) {
             AddEditTaskItemModel.EDITTEXT -> {
-                v = getViewTextView(position, convertView, parent)
+                v = getViewEditText(position, convertView, parent)
             }
             AddEditTaskItemModel.SPINNER -> {
                 v = getViewSpinner(position, convertView, parent)
+            }
+            AddEditTaskItemModel.TEXTVIEW-> {
+                v = getViewTextView(position,convertView,parent)
             }
         }
         return v as View
     }
 
-    private fun getViewTextView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    private fun getViewEditText(position: Int, convertView: View?, parent: ViewGroup?): View {
         var v = convertView
         v = inflater.inflate(R.layout.add_edit_task_listitem_edittext, null)
-        val holder = AddEditTasksListitemAdapter.ItemHolderTextView(
+        val holder = AddEditTasksListitemAdapter.ItemHolderEditText(
                 v.findViewById(R.id.imageView) as ImageView,
                 v.findViewById(R.id.editText) as EditText
         )
@@ -64,6 +67,23 @@ class AddEditTasksListitemAdapter(
 
         return v as View
     }
+    private fun getViewTextView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        var v = convertView
+        v = inflater.inflate(R.layout.add_edit_task_listitem_textview, null)
+        val holder = AddEditTasksListitemAdapter.ItemHolderTextView(
+                v.findViewById(R.id.imageView) as ImageView,
+                v.findViewById(R.id.textView) as TextView
+        )
+        // リサイクルするときのためにタグ付けしておく
+        v.tag = holder
+
+        // itemのセット
+        holder.imageView.setImageResource(rows[position].imageId)
+        holder.textView.text = rows[position].text
+        holder.textView.setOnClickListener{presenter.enterTimePicker()}
+
+        return v as View
+    }
 
     fun setupSpinnerItem(spinner: Spinner, menu: ArrayList<String>?) {
         // スピナーのレイアウト指定
@@ -86,7 +106,7 @@ class AddEditTasksListitemAdapter(
         return rows.size
     }
 
-    class ItemHolderTextView(
+    class ItemHolderEditText(
             var imageView: ImageView,
             var editText: EditText
     )
@@ -94,5 +114,9 @@ class AddEditTasksListitemAdapter(
     class ItemHolderSpinner(
             var imageView: ImageView,
             var spinner: Spinner
+    )
+    class ItemHolderTextView(
+            var imageView: ImageView,
+            var textView: TextView
     )
 }
