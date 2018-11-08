@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
-        android:id="@+id/listView"
-        style="@style/TextApper.listView"
-        tools:listheader="@layout/pager_day_listheader"
-        tools:listitem="@layout/pager_day_listitem">
-
-    </se.emilsjolander.stickylistheaders.StickyListHeadersListView>
-
-    <android.support.design.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="presenter" type="com.example.ehu.weekckech.presenter.contract.PagerDayConstract.Presenter"/>
+    </data>
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        android:backgroundTint="@color/colorPrimary"
-        app:fabCradleMargin="0dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_task_floating_button"
-        style="@style/Widget.MaterialComponents.BottomAppBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_white_24dp"
-        app:backgroundTint="@color/colorSub"
-        app:layout_anchor="@id/bottom_app_bar" />
+        <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+            android:id="@+id/listView"
+            style="@style/TextApper.listView"
+            tools:listheader="@layout/pager_day_listheader"
+            tools:listitem="@layout/pager_day_listitem">
 
-</android.support.design.widget.CoordinatorLayout>
+        </se.emilsjolander.stickylistheaders.StickyListHeadersListView>
+
+        <android.support.design.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/colorPrimary"
+            app:fabCradleMargin="0dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_task_floating_button"
+            style="@style/Widget.MaterialComponents.BottomAppBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_white_24dp"
+            app:backgroundTint="@color/colorSub"
+            app:layout_anchor="@id/bottom_app_bar"
+            android:onClick="@{()->presenter.addNewDayTask()}"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>
