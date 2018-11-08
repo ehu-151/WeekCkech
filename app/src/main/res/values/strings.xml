@@ -8,4 +8,5 @@
     <string name="edit_activity_title">編集</string>
     <string name="edit_save_button">保存する</string>
     <string name="edot_leave_button">やめる</string>
+    <string name="no_detail">You type TODO detail on here.</string>
 </resources>

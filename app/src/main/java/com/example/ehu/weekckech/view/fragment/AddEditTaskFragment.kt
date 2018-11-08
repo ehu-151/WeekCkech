@@ -95,13 +95,12 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         // clickadapter
         saveButton.setOnClickListener {
             // 値の取得
-            val title = titleLayout.findViewById<EditText>(R.id.editText).text.toString()
             val detail = detailLayout.findViewById<EditText>(R.id.editText).text.toString()
             val limitTime = limitTimeLayout.findViewById<TextView>(R.id.textView).text.toString()
             val notificationTime = notificationTimeLayout.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
             val weekGroup = weekGroupLayout.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
 
-            presenter.saveTask(TaskDataModel(title = title, detail = detail, limitDate = limitTime,
+            presenter.saveTask(TaskDataModel(detail = detail, limitDate = limitTime,
                     notificationTime = notificationTime, weekGroup = weekGroup))
         }
         // OnClickのTimePicker
