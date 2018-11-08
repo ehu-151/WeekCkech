@@ -4,7 +4,9 @@ package com.example.ehu.weekckech.view.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,15 +32,16 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     // セットする変数の宣言
     override var presenter: PagerDayConstract.Presenter = PagerDayPresenter(this)
     lateinit var listView: StickyListHeadersListView
+    lateinit var floatingActionButton: FloatingActionButton
 
 
     private lateinit var mContext: Context
     override fun showDaysTasks(dayListItems: ArrayList<DayListItemModel>) {
-        listView.adapter = TasksAdapter(mContext, dayListItems,presenter)
+        listView.adapter = TasksAdapter(mContext, dayListItems, presenter)
     }
 
     override fun showAddEditTask() {
-        var mIntent=Intent(this.mContext,AddEditTaskActivity::class.java)
+        var mIntent = Intent(this.mContext, AddEditTaskActivity::class.java)
         startActivity(mIntent)
     }
 
@@ -63,6 +66,12 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
         mContext = view.context
         // ListViewのセット
         listView = view.findViewById(R.id.listView)
+        floatingActionButton = view.findViewById(R.id.add_task_floating_button)
+        floatingActionButton.setOnClickListener {
+            Log.d("setOnClickListener", "Add Task")
+            presenter.addNewDayTask()
+        }
+
     }
 
 }

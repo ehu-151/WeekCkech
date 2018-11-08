@@ -6,11 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.BaseAdapter
+import android.widget.CheckBox
+import android.widget.TextView
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.DayListItemModel
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
-import com.example.ehu.weekckech.view.fragment.MainPagerDayFragment
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
 
 /**
@@ -21,7 +22,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
  * クリックリスナーをセットしています。
  */
 class TasksAdapter(
-        val context: Context, val rows: ArrayList<DayListItemModel>,val presenter: PagerDayConstract.Presenter)
+        val context: Context, val rows: ArrayList<DayListItemModel>, val presenter: PagerDayConstract.Presenter)
     : BaseAdapter(), StickyListHeadersAdapter {
 
     val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -53,20 +54,13 @@ class TasksAdapter(
         // 前の日付グループと同じならlistitemの追加
         v = inflater.inflate(R.layout.pager_day_listheader, null)
         var holder = TasksAdapter.HeaderHolder(
-                v?.findViewById(R.id.header_title) as TextView,
-                v?.findViewById(R.id.header_imageView) as ImageView
+                v?.findViewById(R.id.header_title) as TextView
         )
         // リサイクルするときのためにタグ付けしておく
         v.tag = holder
 
         // itemのセット
         holder.headerName.text = rows[position].weekGroup
-
-        // クリックアダプターのセット
-        v.findViewById<ConstraintLayout>(R.id.header_imageView_clickspase).setOnClickListener {
-            Log.d("setOnClickListener", "header_layout:" + getHeaderItem(position))
-            presenter.addNewDayTask()
-        }
 
         return v as View
     }
@@ -128,8 +122,7 @@ class TasksAdapter(
 
     // 表示するビューの型指定
     class HeaderHolder(
-            var headerName: TextView,
-            var addImageView: ImageView
+            var headerName: TextView
     )
 
 }
