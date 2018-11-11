@@ -12,12 +12,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
 import com.example.ehu.weekckech.data.sql.TaskDataModel
+import com.example.ehu.weekckech.databinding.FragmentAddEditTaskBinding
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
 import java.util.*
@@ -27,18 +29,14 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     val TAG = "AddEditTaskFragment"
     lateinit var mContext: Context
     lateinit var mView: View
-    lateinit var titleLayout: ConstraintLayout
-    lateinit var detailLayout: ConstraintLayout
-    lateinit var limitTimeLayout: ConstraintLayout
-    lateinit var notificationTimeLayout: ConstraintLayout
-    lateinit var weekGroupLayout: ConstraintLayout
-    lateinit var saveButton: Button
-    lateinit var leaveButton: Button
+    lateinit var binding: FragmentAddEditTaskBinding
     override var presenter: AddEditTaskContract.Presenter = AddEditTaskPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_add_edit_task, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_edit_task, container, false)
+        binding.presenter = presenter
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,31 +44,22 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         // Contextの格納
         mContext = view.context
         mView = view
-        titleLayout = view.findViewById(R.id.edit_include_title)
-        detailLayout = view.findViewById(R.id.edit_include_detail)
-        limitTimeLayout = view.findViewById(R.id.edit_include_limittime)
-        notificationTimeLayout = view.findViewById(R.id.edit_include_notificationtime)
-        weekGroupLayout = view.findViewById(R.id.edit_include_weekgroup)
-
-        // Buttonのセット
-        saveButton = view.findViewById(R.id.edit_save_button)
-        leaveButton = view.findViewById(R.id.edit_leave_button)
         // clickadapter
-        saveButton.setOnClickListener {
+        binding.editSaveButton.setOnClickListener {
             // 値の取得
-            val detail = detailLayout.findViewById<EditText>(R.id.editText).text.toString()
-            val limitTime = limitTimeLayout.findViewById<TextView>(R.id.textView).text.toString()
-            val notificationTime = notificationTimeLayout.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
-            val weekGroup = weekGroupLayout.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
+            val detail = binding.editIncludeDetail.findViewById<EditText>(R.id.editText).text.toString()
+            val limitTime = binding.editIncludeLimittime.findViewById<TextView>(R.id.textView).text.toString()
+            val notificationTime = binding.editIncludeNotificationtime.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
+            val weekGroup = binding.editIncludeWeekgroup.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
 
             presenter.saveTask(TaskDataModel(detail = detail, limitDate = limitTime,
                     notificationTime = notificationTime, weekGroup = weekGroup))
         }
         // OnClickのTimePicker
-        limitTimeLayout.findViewById<TextView>(R.id.textView).setOnClickListener {
+        binding.editIncludeLimittime.findViewById<TextView>(R.id.textView).setOnClickListener {
             showTimePicker()
         }
-        leaveButton.setOnClickListener { showTasksMain() }
+        binding.editLeaveButton.setOnClickListener { showTasksMain() }
 
         presenter.start()
     }
@@ -153,7 +142,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     }
 
     fun setLimitTime(limitTime: String) {
-        limitTimeLayout.findViewById<TextView>(R.id.textView).text = limitTime
+        binding.editIncludeLimittime.findViewById<TextView>(R.id.textView).text = limitTime
     }
 
 }
