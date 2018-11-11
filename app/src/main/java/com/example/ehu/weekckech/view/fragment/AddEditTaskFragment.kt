@@ -2,7 +2,6 @@ package com.example.ehu.weekckech.view.fragment
 
 
 import android.app.Dialog
-import android.app.DialogFragment
 import android.app.TimePickerDialog
 import android.content.Context
 import android.os.Bundle
@@ -13,6 +12,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.example.ehu.weekckech.R
@@ -24,43 +24,6 @@ import java.util.*
 
 
 class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
-    override fun hideKeybord() {
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
-    }
-
-    override fun showKeybord() {
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
-    }
-
-    private fun showTimePicker() {
-        class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
-
-            override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-                // Use the current time as the default values for the picker
-                val c = Calendar.getInstance()
-                val hour = c.get(Calendar.HOUR_OF_DAY)
-                val minute = c.get(Calendar.MINUTE)
-
-
-                // Create a new instance of TimePickerDialog and return it
-                return TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
-            }
-
-            override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
-                setLimitTime("$hourOfDay:$minute")
-            }
-        }
-
-        TimePickerFragment().show((activity as FragmentActivity).fragmentManager, "TAG")
-    }
-
-
-    fun setLimitTime(limitTime: String) {
-        limitTimeLayout.findViewById<TextView>(R.id.textView).text = limitTime
-    }
-
     val TAG = "AddEditTaskFragment"
     lateinit var mContext: Context
     lateinit var mView: View
@@ -110,13 +73,6 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         leaveButton.setOnClickListener { showTasksMain() }
 
         presenter.start()
-//        val sharedElementEnterTransition = activity?.getWindow()?.getSharedElementEnterTransition()
-//        sharedElementEnterTransition?.addListener(object : TransitionListenerAdapter() {
-//            override fun onTransitionEnd(transition: Transition) {
-//                super.onTransitionEnd(transition)
-//                Log.d(TAG,"onTransitionEnd")
-//            }
-//        })
     }
 
     override fun setTaskConfigEditRow(lists: ArrayList<AddEditTaskItemModel>) {
@@ -169,4 +125,42 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         super.onActivityCreated(savedInstanceState)
         showKeybord()
     }
+
+    override fun hideKeybord() {
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+    }
+
+    override fun showKeybord() {
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+    }
+
+    private fun showTimePicker() {
+        class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
+
+            override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+                // Use the current time as the default values for the picker
+                val c = Calendar.getInstance()
+                val hour = c.get(Calendar.HOUR_OF_DAY)
+                val minute = c.get(Calendar.MINUTE)
+
+
+                // Create a new instance of TimePickerDialog and return it
+                return TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
+            }
+
+            override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
+                setLimitTime("$hourOfDay:$minute")
+            }
+        }
+
+        TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
+    }
+
+
+    fun setLimitTime(limitTime: String) {
+        limitTimeLayout.findViewById<TextView>(R.id.textView).text = limitTime
+    }
+
 }
