@@ -1,12 +1,12 @@
 package com.example.ehu.weekckech.presenter.activity
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.view.fragment.AddEditTaskFragment
 import android.view.WindowManager
 import android.os.Build
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 
 
 class AddEditTaskActivity : AppCompatActivity() {
