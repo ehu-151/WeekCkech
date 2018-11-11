@@ -75,10 +75,10 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         presenter.start()
     }
 
-    override fun setTaskConfigEditRow(lists: ArrayList<AddEditTaskItemModel>) {
-        for (list in lists) {
+    override fun setTaskConfigEditRow(listItemModel: ArrayList<AddEditTaskItemModel>) {
+        for (list in listItemModel) {
             val model = AddEditTaskItemModel
-            var layout: ConstraintLayout = mView.findViewById(list.layoutid)
+            val layout: ConstraintLayout = mView.findViewById(list.layoutid)
             layout.findViewById<ImageView>(R.id.imageView).setImageResource(list.imageId)
             if (list.componentType == model.EDITTEXT) {
                 layout.findViewById<EditText>(R.id.editText).hint = list.hintText
@@ -94,7 +94,6 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                 layout.findViewById<TextView>(R.id.textView).text = list.text
             }
         }
-
     }
 
     override fun showTasksMain() {
@@ -102,10 +101,6 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         activity?.finish()
     }
 
-    //    override fun onActivityCreated() {
-//        super.onActivityCreated()
-//        showKeybord()
-//    }
     override fun onDestroy() {
         super.onDestroy()
         hideKeybord()
@@ -154,10 +149,8 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                 setLimitTime("$hourOfDay:$minute")
             }
         }
-
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
     }
-
 
     fun setLimitTime(limitTime: String) {
         limitTimeLayout.findViewById<TextView>(R.id.textView).text = limitTime
