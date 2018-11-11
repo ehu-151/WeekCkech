@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimaryLight">
 
     <LinearLayout
@@ -11,37 +11,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <include
-            layout="@layout/add_edit_task_listitem_edittext"
             android:id="@+id/edit_include_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <include
             layout="@layout/add_edit_task_listitem_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder" />
+
+        <include
             android:id="@+id/edit_include_detail"
+            layout="@layout/add_edit_task_listitem_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder" />
+
         <include
-            layout="@layout/add_edit_task_listitem_textview"
             android:id="@+id/edit_include_limittime"
+            layout="@layout/add_edit_task_listitem_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder" />
+
         <include
-            layout="@layout/add_edit_task_listitem_spinner"
             android:id="@+id/edit_include_notificationtime"
-            android:layout_width="match_parent"
-            android:layout_height="70dp" />
-        <include
             layout="@layout/add_edit_task_listitem_spinner"
-            android:id="@+id/edit_include_weekgroup"
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorder" />
+
+        <include
+            android:id="@+id/edit_include_weekgroup"
+            layout="@layout/add_edit_task_listitem_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,4 +90,4 @@
             android:text="@string/edot_leave_button" />
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
