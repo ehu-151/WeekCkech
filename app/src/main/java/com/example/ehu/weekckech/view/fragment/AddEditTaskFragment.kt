@@ -47,16 +47,16 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         // clickadapter
         binding.editSaveButton.setOnClickListener {
             // 値の取得
-            val detail = binding.editIncludeDetail.findViewById<EditText>(R.id.editText).text.toString()
-            val limitTime = binding.editIncludeLimittime.findViewById<TextView>(R.id.textView).text.toString()
-            val notificationTime = binding.editIncludeNotificationtime.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
-            val weekGroup = binding.editIncludeWeekgroup.findViewById<Spinner>(R.id.spinner).selectedItem.toString()
+            val detail = binding.editIncludeDetail.editText.text.toString()
+            val limitTime = binding.editIncludeLimittime.textView.text.toString()
+            val notificationTime = binding.editIncludeNotificationtime.spinner.selectedItem.toString()
+            val weekGroup = binding.editIncludeWeekgroup.spinner.selectedItem.toString()
 
             presenter.saveTask(TaskDataModel(detail = detail, limitDate = limitTime,
                     notificationTime = notificationTime, weekGroup = weekGroup))
         }
         // OnClickのTimePicker
-        binding.editIncludeLimittime.findViewById<TextView>(R.id.textView).setOnClickListener {
+        binding.editIncludeLimittime.textView.setOnClickListener {
             showTimePicker()
         }
         binding.editLeaveButton.setOnClickListener { showTasksMain() }
@@ -142,7 +142,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     }
 
     fun setLimitTime(limitTime: String) {
-        binding.editIncludeLimittime.findViewById<TextView>(R.id.textView).text = limitTime
+        binding.editIncludeLimittime.textView.text = limitTime
     }
 
 }
