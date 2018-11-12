@@ -1,7 +1,6 @@
 package com.example.ehu.weekckech.presenter.adapter
 
 import android.content.Context
-import android.support.constraint.ConstraintLayout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.DayListItemModel
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
@@ -90,7 +90,6 @@ class TasksAdapter(
         v = inflater.inflate(R.layout.pager_day_listitem, null)
         val holder = TasksAdapter.ItemHolder(
                 v.findViewById(R.id.pager_day_listitem_checkbox) as CheckBox,
-                v.findViewById(R.id.pager_day_listitem_title) as TextView,
                 v.findViewById(R.id.pager_day_listitem_detail) as TextView
         )
         // リサイクルするときのためにタグ付けしておく
@@ -98,7 +97,6 @@ class TasksAdapter(
 
         // itemのセット
         holder.checkBox.isChecked = rows[position].isChecked
-        holder.title.text = rows[position].title
         holder.detail.text = rows[position].detail
 
         // クリックアダプターのセット
@@ -116,7 +114,6 @@ class TasksAdapter(
 
     class ItemHolder(
             var checkBox: CheckBox,
-            var title: TextView,
             var detail: TextView
     )
 
