@@ -2,12 +2,12 @@ package com.example.ehu.weekckech.view.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.DayListItemModel
 import com.example.ehu.weekckech.databinding.PagerDayBinding
@@ -44,8 +44,8 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate<PagerDayBinding>(inflater, R.layout.pager_day, container, false)
-        val root = binding.root
+        binding = DataBindingUtil.inflate(inflater, R.layout.pager_day, container, false)
+        val root = binding.getRoot()
         binding.presenter = presenter
         return root
     }

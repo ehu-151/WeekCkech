@@ -1,11 +1,11 @@
 package com.example.ehu.weekckech.presenter.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
+import android.support.design.widget.TabLayout
+import android.support.v4.view.ViewPager
+import android.support.v7.app.AppCompatActivity
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.presenter.adapter.MainPagerAdapter
-import com.google.android.material.tabs.TabLayout
 
 class TasksMainActivity : AppCompatActivity() {
 

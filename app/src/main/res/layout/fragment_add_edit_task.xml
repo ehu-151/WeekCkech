@@ -1,103 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryLight">
 
-    <data>
-
-        <variable
-            name="presenter"
-            type="com.example.ehu.weekckech.presenter.contract.AddEditTaskContract.Presenter" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryLight">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp">
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
+        <include
+            layout="@layout/add_edit_task_listitem_edittext"
+            android:id="@+id/edit_include_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content" />
 
-            <include
-                android:id="@+id/edit_include_title"
-                layout="@layout/add_edit_task_listitem_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBorder" />
-
-            <include
-                android:id="@+id/edit_include_detail"
-                layout="@layout/add_edit_task_listitem_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBorder" />
-
-            <include
-                android:id="@+id/edit_include_limittime"
-                layout="@layout/add_edit_task_listitem_textview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBorder" />
-
-            <include
-                android:id="@+id/edit_include_notificationtime"
-                layout="@layout/add_edit_task_listitem_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBorder" />
-
-            <include
-                android:id="@+id/edit_include_weekgroup"
-                layout="@layout/add_edit_task_listitem_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <include
+            layout="@layout/add_edit_task_listitem_edittext"
+            android:id="@+id/edit_include_detail"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            layout="@layout/add_edit_task_listitem_textview"
+            android:id="@+id/edit_include_limittime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            layout="@layout/add_edit_task_listitem_spinner"
+            android:id="@+id/edit_include_notificationtime"
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+        <include
+            layout="@layout/add_edit_task_listitem_spinner"
+            android:id="@+id/edit_include_weekgroup"
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <Button
+            android:id="@+id/edit_save_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            android:layout_weight="1"
+            android:text="@string/edit_save_button" />
 
-            <Button
-                android:id="@+id/edit_save_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/edit_save_button" />
+        <Button
+            android:id="@+id/edit_leave_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/edot_leave_button" />
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/edit_leave_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/edot_leave_button" />
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</android.support.constraint.ConstraintLayout>

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-
-        <variable
-            name="presenter"
-            type="com.example.ehu.weekckech.presenter.contract.PagerDayConstract.Presenter" />
+        <variable name="presenter" type="com.example.ehu.weekckech.presenter.contract.PagerDayConstract.Presenter"/>
     </data>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -23,22 +18,23 @@
 
         </se.emilsjolander.stickylistheaders.StickyListHeadersListView>
 
-        <com.google.android.material.bottomappbar.BottomAppBar
+        <android.support.design.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="bottom"
-            android:backgroundTint="@color/colorPrimary" />
+            android:backgroundTint="@color/colorPrimary"
+            app:fabCradleMargin="0dp" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/add_task_floating_button"
             style="@style/Widget.MaterialComponents.BottomAppBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{()->presenter.addNewDayTask()}"
             android:src="@drawable/ic_add_white_24dp"
             app:backgroundTint="@color/colorSub"
-            app:layout_anchor="@id/bottom_app_bar" />
+            app:layout_anchor="@id/bottom_app_bar"
+            android:onClick="@{()->presenter.addNewDayTask()}"/>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

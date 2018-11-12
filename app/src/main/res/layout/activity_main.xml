@@ -7,29 +7,29 @@
     tools:context=".presenter.activity.TasksMainActivity"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/TextApper.BaseToolbar.TasksMainActivity"
         app:title="@string/app_name"        />
 
-    <androidx.viewpager.widget.ViewPager android:id="@+id/viewpager"
+    <android.support.v4.view.ViewPager android:id="@+id/viewpager"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content">
 
-        <com.google.android.material.tabs.TabLayout
+        <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
             style="@style/TextApper.TabLayout">
 
-            <com.google.android.material.tabs.TabItem
+            <android.support.design.widget.TabItem
                 android:id="@+id/tab_day"
                 style="TextApper.TabItem"
                 android:text="@string/tab_day" />
 
-            <com.google.android.material.tabs.TabItem
+            <android.support.design.widget.TabItem
                 android:id="@+id/tab_week"
                 style="TextApper.TabItem"
                 android:text="@string/tab_week" />
-        </com.google.android.material.tabs.TabLayout>
-    </androidx.viewpager.widget.ViewPager>
+        </android.support.design.widget.TabLayout>
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>
