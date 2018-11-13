@@ -25,8 +25,10 @@
         <!--<item name="colorBorder">@color/colorBorder</item>-->
         <item name="android:timePickerDialogTheme">@style/TimePickerDialogTheme</item>
     </style>
+
     <style name="TimePickerDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
-        <item name="colorAccent">@color/colorPrimary</item> <!-- colorAccent here seems to work just fine? -->
+        <item name="colorAccent">@color/colorPrimary
+        </item> <!-- colorAccent here seems to work just fine? -->
     </style>
     <!--共通-->
     <style name="TextApper">
@@ -43,9 +45,11 @@
         <item name="android:theme">?attr/actionBarTheme</item>
         <item name="titleTextColor">@color/colorChar</item>
     </style>
+
     <style name="TextApper.BaseToolbar.TasksMainActivity">
         <item name="android:background">@color/colorPrimary</item>
     </style>
+
     <style name="TextApper.BaseToolbar.AddEditTaskActivity">
         <item name="android:background">@color/colorSubLight</item>
     </style>
@@ -57,7 +61,7 @@
     </style>
     <!--TabItem-->
     <style name="TextApper.TabItem">
-        
+
     </style>
     <!--ListView-->
     <style name="TextApper.listView">
@@ -119,6 +123,21 @@
     <!--SpinnerItem-->
     <style name="TextApper.listViewAddEditTaskActivity.ListItem.SpinnerItem">
         <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyButton" >
+        <item name="android:backgroundTint">@color/colorSubLight</item>
+        <item name="android:textColor">@color/colorChar</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="MyImageButtom">
+        <item name="android:backgroundTint">@color/colorSubLight</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+
     </style>
 
 
