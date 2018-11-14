@@ -8,13 +8,13 @@
         <variable
             name="presenter"
             type="com.example.ehu.weekckech.presenter.contract.AddEditTaskContract.Presenter" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryLight">
-
 
         <include
             android:id="@+id/edit_include_title"
@@ -102,8 +102,8 @@
             android:id="@+id/button_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:background="@color/colorPrimaryDark"
+            android:windowSoftInputMode="adjustResize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -128,6 +128,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_weight="1"
                 android:text="@string/edot_leave_button"
+                app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/prev_item"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -135,33 +136,37 @@
                 app:layout_constraintStart_toEndOf="@+id/edit_save_button"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/prev_item"
-                style="@style/MyImageButtom"
+                style="@style/MyButton"
                 android:layout_marginStart="12dp"
+                android:layout_weight="1"
                 android:contentDescription="@string/prev_item"
-                android:src="@drawable/ic_keyboard_arrow_left"
+                app:icon="@drawable/ic_keyboard_arrow_left"
+                app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/next_item"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/edit_leave_button"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/next_item"
-                style="@style/MyImageButtom"
+                style="@style/MyButton"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_weight="1"
                 android:contentDescription="@string/next_item"
+                app:icon="@drawable/ic_keyboard_arrow_right"
+                app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/prev_item"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/ic_keyboard_arrow_right" />
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

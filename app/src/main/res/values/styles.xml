@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -125,20 +125,13 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
-    <style name="MyButton" >
+    <style name="MyButton" parent="Theme.MaterialComponents">
         <item name="android:backgroundTint">@color/colorSubLight</item>
         <item name="android:textColor">@color/colorChar</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">15sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">bottom</item>
     </style>
-
-    <style name="MyImageButtom">
-        <item name="android:backgroundTint">@color/colorSubLight</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-
-    </style>
-
-
 </resources>
