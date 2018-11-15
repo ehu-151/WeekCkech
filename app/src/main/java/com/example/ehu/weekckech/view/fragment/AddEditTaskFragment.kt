@@ -60,7 +60,8 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             showTimePicker()
         }
         binding.editLeaveButton.setOnClickListener { showTasksMain() }
-
+        binding.nextItem.setOnClickListener { /*TODO Click処理*/ }
+        binding.prevItem.setOnClickListener { /*TODO Click処理*/ }
         presenter.start()
     }
 

@@ -10,4 +10,6 @@
     <string name="edot_leave_button">やめる</string>
     <string name="no_detail">You type TODO detail on here.</string>
     <string name="init_time">12:00</string>
+    <string name="next_item">前の項目に移動</string>
+    <string name="prev_item">次の項目に移動</string>
 </resources>

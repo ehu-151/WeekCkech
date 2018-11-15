@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -25,8 +25,10 @@
         <!--<item name="colorBorder">@color/colorBorder</item>-->
         <item name="android:timePickerDialogTheme">@style/TimePickerDialogTheme</item>
     </style>
+
     <style name="TimePickerDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
-        <item name="colorAccent">@color/colorPrimary</item> <!-- colorAccent here seems to work just fine? -->
+        <item name="colorAccent">@color/colorPrimary
+        </item> <!-- colorAccent here seems to work just fine? -->
     </style>
     <!--共通-->
     <style name="TextApper">
@@ -43,9 +45,11 @@
         <item name="android:theme">?attr/actionBarTheme</item>
         <item name="titleTextColor">@color/colorChar</item>
     </style>
+
     <style name="TextApper.BaseToolbar.TasksMainActivity">
         <item name="android:background">@color/colorPrimary</item>
     </style>
+
     <style name="TextApper.BaseToolbar.AddEditTaskActivity">
         <item name="android:background">@color/colorSubLight</item>
     </style>
@@ -57,7 +61,7 @@
     </style>
     <!--TabItem-->
     <style name="TextApper.TabItem">
-        
+
     </style>
     <!--ListView-->
     <style name="TextApper.listView">
@@ -121,5 +125,13 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
-
+    <style name="MyButton" parent="Theme.MaterialComponents">
+        <item name="android:backgroundTint">@color/colorSubLight</item>
+        <item name="android:textColor">@color/colorChar</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
 </resources>

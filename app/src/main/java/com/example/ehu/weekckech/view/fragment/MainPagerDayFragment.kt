@@ -44,7 +44,7 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate<PagerDayBinding>(inflater, R.layout.pager_day, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.pager_day, container, false)
         val root = binding.root
         binding.presenter = presenter
         return root
