@@ -46,4 +46,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'se.emilsjolander:stickylistheaders:2.6.0'
     kapt "com.android.databinding:compiler:3.2.1"
+    def room_version = "2.1.0-alpha02"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }
