@@ -9,6 +9,6 @@ import java.util.*
  * @property [title] アイテムのタイトル
  * @property [detail] アイテムの詳細
  */
-data class DayListItemModel (val isChecked:Boolean , val title:String, val detail:String,val weekGroup:String){
+data class DayListItemModel(val isChecked: Boolean, val detail: String, val weekGroup: String) {
 
 }
