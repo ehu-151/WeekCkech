@@ -1,9 +1,6 @@
 package com.example.ehu.weekckech.data.sql.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface RoomTaskDao{
@@ -18,17 +15,21 @@ interface RoomTaskDao{
     fun getByWeekGroup(weekGroup: List<String>): RoomTask
 
     @Query("SELECT * FROM roomtask WHERE detail LIKE :detail")
-    fun searchLikeDetail(detail:String)
+    fun searchLikeDetail(detail:String):RoomTask
 
     @Query("SELECT * FROM roomtask WHERE isChecked LIKE :isChecked")
-    fun getChecked(isChecked:Boolean)
+    fun getChecked(isChecked:Boolean):List<RoomTask>
 
 
     // insert
     @Insert
+    fun insert(roomTask: RoomTask)
+
+    @Insert
     fun insertAll(vararg roomTask: RoomTask)
 
     // update
+    @Update
     fun updateTasks(vararg roomTask:RoomTask)
 
     // delete

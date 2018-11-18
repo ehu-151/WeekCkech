@@ -52,8 +52,8 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             val notificationTime = binding.editIncludeNotificationtime.spinner.selectedItem.toString()
             val weekGroup = binding.editIncludeWeekgroup.spinner.selectedItem.toString()
 
-            presenter.saveTask(TaskDataModel(detail = detail, limitDate = limitTime,
-                    notificationTime = notificationTime, weekGroup = weekGroup))
+            presenter.saveTask(TaskDataModel(detail = detail, limitTime = limitTime,
+                    notificationTime = notificationTime, weekGroup = weekGroup), mContext)
         }
         // OnClickのTimePicker
         binding.editIncludeLimittime.textView.setOnClickListener {

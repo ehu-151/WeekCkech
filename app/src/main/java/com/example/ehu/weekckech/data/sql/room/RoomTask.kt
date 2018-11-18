@@ -15,7 +15,7 @@ class RoomTask {
     @ColumnInfo(name = "detail")
     lateinit var detail: String
 
-    @ColumnInfo(name = "limitDate")
+    @ColumnInfo(name = "limitTime")
     var limitTime: String?=null
 
     @ColumnInfo(name = "notificationTime")
