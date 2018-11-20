@@ -1,6 +1,6 @@
 package com.example.ehu.weekckech.presenter.presenter
 
-import com.example.ehu.weekckech.data.sql.DayListItemModel
+import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
 
 
@@ -10,18 +10,9 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayCons
      * 全てのタスクを表示する
      */
     override fun loadDaysTasks() {
-        val list = ArrayList<DayListItemModel>()
-        list.add(DayListItemModel(false, "詳細1", "月"))
-        list.add(DayListItemModel(false, "詳細2", "月"))
-        list.add(DayListItemModel(false, "詳細3", "月"))
-        list.add(DayListItemModel(false, "詳細4", "火"))
-        list.add(DayListItemModel(true, "詳細5", "火"))
-        list.add(DayListItemModel(false, "詳細6", "水"))
-        list.add(DayListItemModel(false, "詳細7", "木"))
-        list.add(DayListItemModel(false, "詳細8", "金"))
-        list.add(DayListItemModel(false, "詳細9", "土"))
-        list.add(DayListItemModel(false, "詳細10", "日"))
-        list.add(DayListItemModel(false, "詳細11", "日"))
+        val list = ArrayList<TaskDataModel>()
+        list.add(TaskDataModel(false, "詳細1", "12:00","11:00","月"))
+        list.add(TaskDataModel(false, "詳細1", "12:00","11:00","月"))
         pagerDayView.showDaysTasks(list)
     }
 

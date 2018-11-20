@@ -1,18 +1,17 @@
 package com.example.ehu.weekckech.presenter.contract
 
-import android.content.Context
 import com.example.ehu.weekckech.BasePresenter
 import com.example.ehu.weekckech.BaseView
-import com.example.ehu.weekckech.data.sql.DayListItemModel
-import com.example.ehu.weekckech.presenter.adapter.TasksAdapter
+import com.example.ehu.weekckech.data.sql.TaskDataModel
 
 interface PagerDayConstract {
-    interface View:BaseView<Presenter>{
-        fun showDaysTasks(dayListItems:ArrayList<DayListItemModel>)
+    interface View : BaseView<Presenter> {
+        fun showDaysTasks(taskDataModel: ArrayList<TaskDataModel>)
         fun showAddEditTask()
         fun showDayTasks()
     }
-    interface Presenter:BasePresenter{
+
+    interface Presenter : BasePresenter {
         fun loadDaysTasks()
         fun completeDaysTask()
         fun activateDaysTask()
