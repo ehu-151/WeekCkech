@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.ehu.weekckech.R
-import com.example.ehu.weekckech.data.sql.DayListItemModel
+import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.databinding.PagerDayBinding
 import com.example.ehu.weekckech.presenter.activity.AddEditTaskActivity
 import com.example.ehu.weekckech.presenter.adapter.TasksAdapter
@@ -29,8 +29,8 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     lateinit var binding: PagerDayBinding
     private lateinit var mContext: Context
 
-    override fun showDaysTasks(dayListItems: ArrayList<DayListItemModel>) {
-        binding.listView.adapter = TasksAdapter(mContext, dayListItems, presenter)
+    override fun showDaysTasks(taskDataModel: ArrayList<TaskDataModel>) {
+        binding.listView.adapter = TasksAdapter(mContext, taskDataModel, presenter)
     }
 
     override fun showAddEditTask() {

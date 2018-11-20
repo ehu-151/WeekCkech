@@ -10,19 +10,19 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.ehu.weekckech.R
-import com.example.ehu.weekckech.data.sql.DayListItemModel
+import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
 
 /**
  * MainPagerDayFragmentから呼ばれることを想定しています。
  *
- * items: ArrayList<DayListItemModel>を引数にとり、モデルをListItemに変換します。
+ * items: ArrayList<TaskDataModel>を引数にとり、モデルをListItemに変換します。
  * itemsに入っているモデルの数だけ、ListItemを生成します。
  * クリックリスナーをセットしています。
  */
 class TasksAdapter(
-        val context: Context, val rows: ArrayList<DayListItemModel>, val presenter: PagerDayConstract.Presenter)
+        val context: Context, val rows: ArrayList<TaskDataModel>, val presenter: PagerDayConstract.Presenter)
     : BaseAdapter(), StickyListHeadersAdapter {
 
     val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -79,7 +79,7 @@ class TasksAdapter(
     }
 
     //Dataクラス
-    var dayListItemModel: ArrayList<DayListItemModel>? = null
+    var taskDataModel: ArrayList<TaskDataModel>? = null
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var v = convertView
@@ -108,8 +108,8 @@ class TasksAdapter(
     }
 
 
-    fun setTaskList(listItem: ArrayList<DayListItemModel>) {
-        dayListItemModel = listItem
+    fun setTaskList(listItem: ArrayList<TaskDataModel>) {
+        taskDataModel = listItem
     }
 
     class ItemHolder(
