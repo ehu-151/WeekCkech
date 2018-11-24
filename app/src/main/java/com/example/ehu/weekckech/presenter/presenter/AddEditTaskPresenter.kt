@@ -16,7 +16,7 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
 
 
     override fun getEditTaskData() {
-        var lists = listOf<Int>(R.id.edit_include_detail, R.id.edit_include_limittime,
+        val lists = listOf<Int>(R.id.edit_include_detail, R.id.edit_include_limittime,
                 R.id.edit_include_notificationtime, R.id.edit_include_weekgroup)
         for (list in lists) {
             when (list) {
@@ -25,7 +25,7 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
     }
 
     override fun loadTaskConfigEditRow() {
-        var lists = java.util.ArrayList<AddEditTaskItemModel>()
+        val lists = java.util.ArrayList<AddEditTaskItemModel>()
         val model = AddEditTaskItemModel
         lists.add(AddEditTaskItemModel(R.id.edit_include_detail, R.drawable.ic_notes_white_24dp, model.EDITTEXT, hintText = "詳細"))
         lists.add(AddEditTaskItemModel(R.id.edit_include_limittime, R.drawable.ic_access_time_white_24dp, model.TEXTVIEW, text = "12:00"))
