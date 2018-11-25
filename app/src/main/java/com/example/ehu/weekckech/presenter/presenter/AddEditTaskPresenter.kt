@@ -49,6 +49,8 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
             val result = db.roomTaskDao().getAll()
 
             result.forEach { it -> Log.d("resultDB", it.toString()) }
+
+            addEditTaskView.showTasksMain()
         }
     }
 

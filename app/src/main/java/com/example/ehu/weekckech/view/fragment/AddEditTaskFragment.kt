@@ -145,5 +145,4 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     fun setLimitTime(limitTime: String) {
         binding.editIncludeLimittime.textView.text = limitTime
     }
-
 }
