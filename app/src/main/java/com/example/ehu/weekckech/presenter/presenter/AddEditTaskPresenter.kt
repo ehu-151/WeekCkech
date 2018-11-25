@@ -36,27 +36,19 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
 
     override fun saveTask(model: TaskDataModel, mContext: Context) {
         val db = Room.databaseBuilder(mContext, AppDatabase::class.java, "database-name").build()
-        val task = RoomTask()
-        task.taskId = Random().nextInt()
-        task.isChecked = model.isChecked
-        task.detail = model.detail
-        task.limitTime = model.limitTime
-        task.notificationTime = model.notificationTime
-        task.weekGroup = model.weekGroup
+        val task = RoomTask(lastUpdate = Date(),
+                isChecked = model.isChecked,
+                detail = model.detail,
+                limitTime = model.limitTime,
+                notificationTime = model.notificationTime,
+                weekGroup = model.weekGroup)
 
         thread {
             db.roomTaskDao().insert(task)
 
             val result = db.roomTaskDao().getAll()
 
-            result.forEachIndexed { index, it -> Log.d("resultDB",
-                    "index$index " +
-                            "${it.taskId} " +
-                            "${it.detail} " +
-                            "${it.limitTime} " +
-                            "${it.limitTime} " +
-                            "${it.notificationTime} " +
-                            "${it.weekGroup} ") }
+            result.forEach { it -> Log.d("resultDB", it.toString()) }
         }
     }
 
