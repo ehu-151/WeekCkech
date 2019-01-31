@@ -9,6 +9,7 @@ import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.data.sql.room.AppDatabase
 import com.example.ehu.weekckech.data.sql.room.RoomTask
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
+import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.concurrent.thread
 
@@ -43,12 +44,14 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
                 notificationTime = model.notificationTime,
                 weekGroup = model.weekGroup)
 
-        thread {
-            //　保存する
-            db.roomTaskDao().insert(task)
-            Log.d("DBInfo", "save:$task")
-            addEditTaskView.showTasksMain()
+        runBlocking {
+            thread {
+                //　保存する
+                db.roomTaskDao().insert(task)
+                Log.d("DBInfo", "save:$task")
+            }
         }
+        addEditTaskView.showTasksMain()
     }
 
     override fun start() {

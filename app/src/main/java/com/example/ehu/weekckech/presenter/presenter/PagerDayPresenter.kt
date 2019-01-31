@@ -24,8 +24,6 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
                 val result = db.roomTaskDao().getAll()
 
                 result.forEach { list.add(TaskDataModel(it.isChecked, it.detail, it.limitTime, it.notificationTime, it.weekGroup)) }
-//            list.add(TaskDataModel(false, "詳細1", "12:00", "11:00", "月"))
-//            list.add(TaskDataModel(false, "詳細1", "12:00", "11:00", "月"))
             }
         }
         list.forEach { Log.d("DBInfo", "load:$it") }
