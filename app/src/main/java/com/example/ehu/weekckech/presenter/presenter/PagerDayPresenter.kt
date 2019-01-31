@@ -1,18 +1,34 @@
 package com.example.ehu.weekckech.presenter.presenter
 
+import android.content.Context
+import android.util.Log
+import androidx.room.Room
 import com.example.ehu.weekckech.data.sql.TaskDataModel
+import com.example.ehu.weekckech.data.sql.room.AppDatabase
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
+import kotlinx.coroutines.runBlocking
+import kotlin.concurrent.thread
 
 
-class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayConstract.Presenter {
-
+class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: Context) : PagerDayConstract.Presenter {
+    lateinit var taskDataModel: TaskDataModel
     /**
      * 全てのタスクを表示する
      */
     override fun loadDaysTasks() {
         val list = ArrayList<TaskDataModel>()
-        list.add(TaskDataModel(false, "詳細1", "12:00","11:00","月"))
-        list.add(TaskDataModel(false, "詳細1", "12:00","11:00","月"))
+        runBlocking {
+            thread {
+                // TODO ここで保存したリストを取得し、引数として渡す。
+                val db = Room.databaseBuilder(mContext, AppDatabase::class.java, "database-name").build()
+                val result = db.roomTaskDao().getAll()
+
+                result.forEach { list.add(TaskDataModel(it.isChecked, it.detail, it.limitTime, it.notificationTime, it.weekGroup)) }
+//            list.add(TaskDataModel(false, "詳細1", "12:00", "11:00", "月"))
+//            list.add(TaskDataModel(false, "詳細1", "12:00", "11:00", "月"))
+            }
+        }
+        list.forEach { Log.d("DBInfo", "load:$it") }
         pagerDayView.showDaysTasks(list)
     }
 
@@ -38,7 +54,6 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View) : PagerDayCons
      * タスクのリロード
      */
     override fun start() {
-        loadDaysTasks()
     }
 
 }

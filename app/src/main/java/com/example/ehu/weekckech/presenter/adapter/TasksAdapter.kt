@@ -34,16 +34,7 @@ class TasksAdapter(
      * weekGroupからGroupの数値を返します。
      */
     fun getHeaderItem(posion: Int): Int {
-        return when (rows[posion].weekGroup) {
-            "月" -> 0
-            "火" -> 1
-            "水" -> 2
-            "木" -> 3
-            "金" -> 4
-            "土" -> 5
-            "日" -> 6
-            else -> 7
-        }
+        return rows[posion].weekGroup
     }
 
     override fun getHeaderView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -60,7 +51,16 @@ class TasksAdapter(
         v.tag = holder
 
         // itemのセット
-        holder.headerName.text = rows[position].weekGroup
+        holder.headerName.text = when (rows[position].weekGroup) {
+            0 -> "日"
+            1 -> "月"
+            2 -> "火"
+            3 -> "水"
+            4 -> "木"
+            5 -> "金"
+            6 -> "土"
+            else -> "日"
+        }
 
         return v as View
     }

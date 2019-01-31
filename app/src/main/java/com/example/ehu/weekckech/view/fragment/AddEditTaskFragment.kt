@@ -20,6 +20,7 @@ import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.databinding.FragmentAddEditTaskBinding
+import com.example.ehu.weekckech.generated.callback.OnClickListener
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
 import java.util.*
@@ -50,7 +51,16 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             val detail = binding.editIncludeDetail.editText.text.toString()
             val limitTime = binding.editIncludeLimittime.textView.text.toString()
             val notificationTime = binding.editIncludeNotificationtime.spinner.selectedItem.toString()
-            val weekGroup = binding.editIncludeWeekgroup.spinner.selectedItem.toString()
+            val weekGroup = when(binding.editIncludeWeekgroup.spinner.selectedItem.toString()){
+                "日"->0
+                "月"->1
+                "火"->2
+                "水"->3
+                "木"->4
+                "金"->5
+                "土"->6
+                else->0
+            }
 
             presenter.saveTask(TaskDataModel(detail = detail, limitTime = limitTime,
                     notificationTime = notificationTime, weekGroup = weekGroup), mContext)
@@ -60,6 +70,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             showTimePicker()
         }
         binding.editLeaveButton.setOnClickListener { showTasksMain() }
+        binding.editLeaveButton.setOnClickListener(View.OnClickListener(){
+
+        })
         binding.nextItem.setOnClickListener { /*TODO Click処理*/ }
         binding.prevItem.setOnClickListener { /*TODO Click処理*/ }
         presenter.start()

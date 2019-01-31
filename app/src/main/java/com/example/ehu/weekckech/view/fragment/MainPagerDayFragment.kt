@@ -3,6 +3,7 @@ package com.example.ehu.weekckech.view.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ import com.example.ehu.weekckech.presenter.presenter.PagerDayPresenter
  */
 class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     // セットする変数の宣言
-    override var presenter: PagerDayConstract.Presenter = PagerDayPresenter(this)
+    override lateinit var presenter: PagerDayConstract.Presenter
     lateinit var binding: PagerDayBinding
     private lateinit var mContext: Context
 
@@ -46,7 +47,6 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.pager_day, container, false)
         val root = binding.root
-        binding.presenter = presenter
         return root
     }
 
@@ -58,7 +58,10 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter=PagerDayPresenter(this,view.context)
+        binding.presenter = presenter
         // Contextの格納
         mContext = view.context
+        presenter.loadDaysTasks()
     }
 }

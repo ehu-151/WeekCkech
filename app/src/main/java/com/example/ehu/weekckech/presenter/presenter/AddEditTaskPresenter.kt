@@ -44,12 +44,9 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
                 weekGroup = model.weekGroup)
 
         thread {
+            //　保存する
             db.roomTaskDao().insert(task)
-
-            val result = db.roomTaskDao().getAll()
-
-            result.forEach { it -> Log.d("resultDB", it.toString()) }
-
+            Log.d("DBInfo", "save:$task")
             addEditTaskView.showTasksMain()
         }
     }

@@ -2,6 +2,7 @@ package com.example.ehu.weekckech.data.sql.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.ehu.weekckech.data.sql.TaskDataModel
 import java.util.*
 
 @Entity
@@ -19,5 +20,5 @@ data class RoomTask(
 
         val notificationTime: String? = null,
 
-        val weekGroup: String
+        val weekGroup: Int
 )

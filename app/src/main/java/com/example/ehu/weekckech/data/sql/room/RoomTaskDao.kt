@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface RoomTaskDao{
     // get
-    @Query("SELECT * FROM roomtask")
+    @Query("SELECT * FROM roomtask ORDER BY weekGroup ASC")
     fun getAll(): List<RoomTask>
 
     @Query("SELECT * FROM roomtask WHERE taskId IN (:taskId)")
@@ -35,5 +35,4 @@ interface RoomTaskDao{
     // delete
     @Delete
     fun delete(roomTask: RoomTask)
-
 }
