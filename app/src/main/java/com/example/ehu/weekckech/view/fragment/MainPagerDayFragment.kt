@@ -62,6 +62,5 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
         binding.presenter = presenter
         // Contextの格納
         mContext = view.context
-        presenter.loadDaysTasks()
     }
 }

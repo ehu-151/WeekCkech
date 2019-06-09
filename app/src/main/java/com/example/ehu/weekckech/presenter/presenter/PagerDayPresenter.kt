@@ -52,6 +52,7 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
      * タスクのリロード
      */
     override fun start() {
+        loadDaysTasks()
     }
 
 }
