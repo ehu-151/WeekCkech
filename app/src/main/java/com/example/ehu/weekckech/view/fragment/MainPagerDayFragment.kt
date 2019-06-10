@@ -3,12 +3,13 @@ package com.example.ehu.weekckech.view.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.databinding.PagerDayBinding
@@ -30,8 +31,10 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     lateinit var binding: PagerDayBinding
     private lateinit var mContext: Context
 
-    override fun showDaysTasks(taskDataModel: ArrayList<TaskDataModel>) {
-        binding.listView.adapter = TasksAdapter(mContext, taskDataModel, presenter)
+    override fun showDaysTasks(taskDataModel: MutableLiveData<ArrayList<TaskDataModel>>) {
+        taskDataModel.observe(this, Observer {
+            binding.listView.adapter = TasksAdapter(mContext, it, presenter)
+        })
     }
 
     override fun showAddEditTask() {
@@ -58,7 +61,7 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter=PagerDayPresenter(this,view.context)
+        presenter = PagerDayPresenter(this, view.context)
         binding.presenter = presenter
         // Contextの格納
         mContext = view.context
