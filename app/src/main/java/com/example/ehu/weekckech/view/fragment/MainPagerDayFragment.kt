@@ -52,7 +52,7 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
 
     override fun onResume() {
         super.onResume()
-        // タスクのロード、ロジックはプレゼンターでやる
+        // タスクのロード
         presenter.start()
     }
 
