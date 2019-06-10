@@ -20,9 +20,9 @@ import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.databinding.FragmentAddEditTaskBinding
-import com.example.ehu.weekckech.generated.callback.OnClickListener
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
+import kotlinx.coroutines.runBlocking
 import java.util.*
 
 
@@ -51,15 +51,15 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             val detail = binding.editIncludeDetail.editText.text.toString()
             val limitTime = binding.editIncludeLimittime.textView.text.toString()
             val notificationTime = binding.editIncludeNotificationtime.spinner.selectedItem.toString()
-            val weekGroup = when(binding.editIncludeWeekgroup.spinner.selectedItem.toString()){
-                "日"->0
-                "月"->1
-                "火"->2
-                "水"->3
-                "木"->4
-                "金"->5
-                "土"->6
-                else->0
+            val weekGroup = when (binding.editIncludeWeekgroup.spinner.selectedItem.toString()) {
+                "日" -> 0
+                "月" -> 1
+                "火" -> 2
+                "水" -> 3
+                "木" -> 4
+                "金" -> 5
+                "土" -> 6
+                else -> 0
             }
 
             presenter.saveTask(TaskDataModel(detail = detail, limitTime = limitTime,
@@ -98,49 +98,33 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     }
 
     override fun showTasksMain() {
-        hideKeybord()
         activity?.finish()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        hideKeybord()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        hideKeybord()
     }
 
     override fun onResume() {
         super.onResume()
-        showKeybord()
+        //ホームから復帰した時
+        showKeyboard()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        showKeybord()
-    }
-
-    override fun hideKeybord() {
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
-    }
-
-    override fun showKeybord() {
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+    override fun showKeyboard() {
+        // 100だと、キーボードが表示されない
+        runBlocking {
+            binding.editIncludeDetail.editText.postDelayed(Runnable {
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                binding.editIncludeDetail.editText.requestFocus()
+                imm.showSoftInput(binding.editIncludeDetail.editText, 0)
+            }, 200)
+        }
     }
 
     private fun showTimePicker() {
         class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
-
             override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
                 // Use the current time as the default values for the picker
                 val c = Calendar.getInstance()
                 val hour = c.get(Calendar.HOUR_OF_DAY)
                 val minute = c.get(Calendar.MINUTE)
-
 
                 // Create a new instance of TimePickerDialog and return it
                 return TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
@@ -153,7 +137,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
     }
 
-    fun setLimitTime(limitTime: String) {
+    private fun setLimitTime(limitTime: String) {
         binding.editIncludeLimittime.textView.text = limitTime
     }
 }

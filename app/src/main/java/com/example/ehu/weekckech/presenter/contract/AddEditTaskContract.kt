@@ -10,8 +10,7 @@ interface AddEditTaskContract {
     interface View : BaseView<AddEditTaskContract.Presenter> {
         fun setTaskConfigEditRow(listItemModel: ArrayList<AddEditTaskItemModel>)
         fun showTasksMain()
-        fun showKeybord()
-        fun hideKeybord()
+        fun showKeyboard()
     }
 
     interface Presenter : BasePresenter {
