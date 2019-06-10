@@ -62,8 +62,14 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                 else -> 0
             }
 
-            presenter.saveTask(TaskDataModel(detail = detail, limitTime = limitTime,
-                    notificationTime = notificationTime, weekGroup = weekGroup), mContext)
+            // 詳細が記入されているなら、save
+            if (detail != "") {
+                presenter.saveTask(TaskDataModel(detail = detail, limitTime = limitTime,
+                        notificationTime = notificationTime, weekGroup = weekGroup), mContext)
+            } else {
+                Toast.makeText(mContext, "何も書かれていません。", Toast.LENGTH_SHORT).show()
+            }
+
         }
         // OnClickのTimePicker
         binding.editIncludeLimittime.textView.setOnClickListener {
