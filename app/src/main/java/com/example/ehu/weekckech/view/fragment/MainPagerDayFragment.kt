@@ -40,8 +40,8 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
         startActivity(AddEditTaskActivity.createIntent(context))
     }
 
-    override fun showEditTask(taskId: Int) {
-        startActivity(AddEditTaskActivity.createIntent(context, taskId))
+    override fun showEditTask(model: TaskDataModel) {
+        startActivity(AddEditTaskActivity.createIntent(context, model))
     }
 
     override fun showDayTasks() {

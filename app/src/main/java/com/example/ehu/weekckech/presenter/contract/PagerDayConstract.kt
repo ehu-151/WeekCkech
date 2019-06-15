@@ -9,7 +9,7 @@ interface PagerDayConstract {
     interface View : BaseView<Presenter> {
         fun showDaysTasks(taskDataModel: MutableLiveData<ArrayList<TaskDataModel>>)
         fun showAddTask()
-        fun showEditTask(taskId: Int)
+        fun showEditTask(model: TaskDataModel)
         fun showDayTasks()
     }
 

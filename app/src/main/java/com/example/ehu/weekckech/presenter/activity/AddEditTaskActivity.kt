@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.view.fragment.AddEditTaskFragment
+import java.lang.IllegalArgumentException
 
 
 class AddEditTaskActivity : AppCompatActivity() {
@@ -30,13 +32,13 @@ class AddEditTaskActivity : AppCompatActivity() {
 
         // intent
         val extras = intent.extras
-        val taskId = extras!!.getInt(EXTRA_TASK_ID, -1)
-        initPersonFragment(taskId)
+        val model = extras!!.getSerializable(EXTRA_TASK_ID) as TaskDataModel?
+        initPersonFragment(model)
     }
 
-    private fun initPersonFragment(taskId: Int) {
+    private fun initPersonFragment(model: TaskDataModel?) {
         // Fragmentのセット
-        val fragment = AddEditTaskFragment.newInstance(taskId)
+        val fragment = AddEditTaskFragment.newInstance(model)
         val manege = supportFragmentManager.beginTransaction()
         manege.add(com.example.ehu.weekckech.R.id.add_fragment_space, fragment)
         manege.commit()
@@ -46,10 +48,10 @@ class AddEditTaskActivity : AppCompatActivity() {
         /**
          * pram:taskId:負の値なら新規タスク
          */
-        fun createIntent(context: Context?, taskId: Int = -1): Intent {
+        fun createIntent(context: Context?, model: TaskDataModel? = null): Intent {
             var mIntent = Intent(context, AddEditTaskActivity::class.java)
             // 編集時はtaskIdをintentで渡す
-            mIntent.putExtra(AddEditTaskActivity().EXTRA_TASK_ID, taskId)
+            mIntent.putExtra(AddEditTaskActivity().EXTRA_TASK_ID, model)
             return mIntent
         }
     }

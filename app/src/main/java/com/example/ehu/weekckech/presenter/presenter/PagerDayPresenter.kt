@@ -11,10 +11,6 @@ import kotlin.concurrent.thread
 
 
 class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: Context) : PagerDayConstract.Presenter {
-    override fun editDayTask(model: TaskDataModel) {
-        pagerDayView.showEditTask(model.taskId)
-
-    }
 
     var taskLiveData = MutableLiveData<ArrayList<TaskDataModel>>()
     /**
@@ -44,6 +40,11 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
 
     override fun addNewDayTask() {
         pagerDayView.showAddTask()
+    }
+
+    override fun editDayTask(model: TaskDataModel) {
+        pagerDayView.showEditTask(model)
+
     }
 
     override fun clearCompleteTasks() {

@@ -152,10 +152,10 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     }
 
     companion object {
-        fun newInstance(taskId: Int): AddEditTaskFragment {
+        fun newInstance(model: TaskDataModel?): AddEditTaskFragment {
             val fragment = AddEditTaskFragment()
             val args = Bundle()
-            args.putInt(AddEditTaskActivity().EXTRA_TASK_ID, taskId)
+            args.putSerializable(AddEditTaskActivity().EXTRA_TASK_ID, model)
             fragment.arguments = args
             return fragment
         }
