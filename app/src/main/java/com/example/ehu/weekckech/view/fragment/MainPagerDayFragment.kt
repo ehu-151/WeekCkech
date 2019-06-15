@@ -1,7 +1,6 @@
 package com.example.ehu.weekckech.view.fragment
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,9 +36,12 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
         })
     }
 
-    override fun showAddEditTask() {
-        var mIntent = Intent(this.mContext, AddEditTaskActivity::class.java)
-        startActivity(mIntent)
+    override fun showAddTask() {
+        startActivity(AddEditTaskActivity.createIntent(context))
+    }
+
+    override fun showEditTask(taskId: Int) {
+        startActivity(AddEditTaskActivity.createIntent(context, taskId))
     }
 
     override fun showDayTasks() {

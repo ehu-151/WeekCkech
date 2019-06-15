@@ -3,7 +3,7 @@ package com.example.ehu.weekckech.data.sql.room
 import androidx.room.*
 
 @Dao
-interface RoomTaskDao{
+interface RoomTaskDao {
     // get
     @Query("SELECT * FROM roomtask ORDER BY weekGroup ASC")
     fun getAll(): List<RoomTask>
@@ -15,10 +15,10 @@ interface RoomTaskDao{
     fun getByWeekGroup(weekGroup: List<String>): RoomTask
 
     @Query("SELECT * FROM roomtask WHERE detail LIKE :detail")
-    fun searchLikeDetail(detail:String):RoomTask
+    fun searchLikeDetail(detail: String): RoomTask
 
     @Query("SELECT * FROM roomtask WHERE isChecked LIKE :isChecked")
-    fun getChecked(isChecked:Boolean):List<RoomTask>
+    fun getChecked(isChecked: Boolean): List<RoomTask>
 
 
     // insert
@@ -30,7 +30,10 @@ interface RoomTaskDao{
 
     // update
     @Update
-    fun updateTasks(vararg roomTask:RoomTask)
+    fun updateTasks(vararg roomTask: RoomTask)
+
+    @Query("UPDATE roomtask SET isChecked = :isChecked WHERE taskId = :taskId")
+    fun changeTaskCheck(taskId: Int, isChecked: Boolean)
 
     // delete
     @Delete

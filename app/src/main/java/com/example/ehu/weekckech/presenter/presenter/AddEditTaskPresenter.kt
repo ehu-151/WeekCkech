@@ -35,9 +35,11 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
         addEditTaskView.setTaskConfigEditRow(lists)
     }
 
+    // 新規のタスク
     override fun saveTask(model: TaskDataModel, mContext: Context) {
         val db = Room.databaseBuilder(mContext, AppDatabase::class.java, "database-name").build()
-        val task = RoomTask(lastUpdate = Date(),
+        val task = RoomTask(taskId = (if (model.taskId > 0) model.taskId else Random().nextInt()),
+                lastUpdate = Date(),
                 isChecked = model.isChecked,
                 detail = model.detail,
                 limitTime = model.limitTime,

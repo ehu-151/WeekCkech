@@ -102,6 +102,7 @@ class TasksAdapter(
         // クリックアダプターのセット
         v.findViewById<ConstraintLayout>(R.id.constraintLayout3).setOnClickListener {
             Log.d("setOnClickListener", "item_layout:" + position.toString())
+            presenter.editDayTask(rows[position])
         }
 
         return v as View

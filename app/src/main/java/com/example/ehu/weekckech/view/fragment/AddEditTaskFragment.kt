@@ -16,10 +16,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.databinding.FragmentAddEditTaskBinding
+import com.example.ehu.weekckech.presenter.activity.AddEditTaskActivity
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
 import kotlinx.coroutines.runBlocking
@@ -35,13 +35,17 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_edit_task, container, false)
+        binding = DataBindingUtil.inflate(inflater, com.example.ehu.weekckech.R.layout.fragment_add_edit_task, container, false)
         binding.presenter = presenter
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // argsの取得
+        val args = arguments
+        val taskId = args?.getInt(AddEditTaskActivity().EXTRA_TASK_ID,-1)
+
         // Contextの格納
         mContext = view.context
         mView = view
@@ -86,19 +90,19 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         for (list in listItemModel) {
             val model = AddEditTaskItemModel
             val layout: ConstraintLayout = mView.findViewById(list.layoutid)
-            layout.findViewById<ImageView>(R.id.imageView).setImageResource(list.imageId)
+            layout.findViewById<ImageView>(com.example.ehu.weekckech.R.id.imageView).setImageResource(list.imageId)
             if (list.componentType == model.EDITTEXT) {
-                layout.findViewById<EditText>(R.id.editText).hint = list.hintText
+                layout.findViewById<EditText>(com.example.ehu.weekckech.R.id.editText).hint = list.hintText
 
             } else if (list.componentType == model.SPINNER) {
                 // スピナーのレイアウト指定
-                val adapter = ArrayAdapter<String>(mContext, R.layout.spinner_item)
+                val adapter = ArrayAdapter<String>(mContext, com.example.ehu.weekckech.R.layout.spinner_item)
                 // プルダウンレイアウト指定
-                adapter.setDropDownViewResource(R.layout.spinner_item)
+                adapter.setDropDownViewResource(com.example.ehu.weekckech.R.layout.spinner_item)
                 adapter.addAll(list.spinnerItem)
-                layout.findViewById<Spinner>(R.id.spinner).adapter = adapter
+                layout.findViewById<Spinner>(com.example.ehu.weekckech.R.id.spinner).adapter = adapter
             } else if (list.componentType == model.TEXTVIEW) {
-                layout.findViewById<TextView>(R.id.textView).text = list.text
+                layout.findViewById<TextView>(com.example.ehu.weekckech.R.id.textView).text = list.text
             }
         }
     }
@@ -146,4 +150,15 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     private fun setLimitTime(limitTime: String) {
         binding.editIncludeLimittime.textView.text = limitTime
     }
+
+    companion object {
+        fun newInstance(taskId: Int): AddEditTaskFragment {
+            val fragment = AddEditTaskFragment()
+            val args = Bundle()
+            args.putInt(AddEditTaskActivity().EXTRA_TASK_ID, taskId)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
 }

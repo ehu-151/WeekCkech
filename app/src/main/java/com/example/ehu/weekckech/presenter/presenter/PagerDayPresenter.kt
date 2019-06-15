@@ -11,6 +11,11 @@ import kotlin.concurrent.thread
 
 
 class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: Context) : PagerDayConstract.Presenter {
+    override fun editDayTask(model: TaskDataModel) {
+        pagerDayView.showEditTask(model.taskId)
+
+    }
+
     var taskLiveData = MutableLiveData<ArrayList<TaskDataModel>>()
     /**
      * 全てのタスクを表示する
@@ -22,7 +27,7 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
                 val db = Room.databaseBuilder(mContext, AppDatabase::class.java, "database-name").build()
                 val result = db.roomTaskDao().getAll()
 
-                result.forEach { list.add(TaskDataModel(it.isChecked, it.detail, it.limitTime, it.notificationTime, it.weekGroup)) }
+                result.forEach { list.add(TaskDataModel(it.taskId, it.isChecked, it.detail, it.limitTime, it.notificationTime, it.weekGroup)) }
                 taskLiveData.postValue(list)
             }
         }
@@ -38,7 +43,7 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
     }
 
     override fun addNewDayTask() {
-        pagerDayView.showAddEditTask()
+        pagerDayView.showAddTask()
     }
 
     override fun clearCompleteTasks() {
