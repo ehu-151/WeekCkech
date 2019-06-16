@@ -14,6 +14,7 @@ import java.util.*
 import kotlin.concurrent.thread
 
 class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddEditTaskContract.Presenter {
+    val lists = java.util.ArrayList<AddEditTaskItemModel>()
 
 
     override fun getEditTaskData() {
@@ -25,14 +26,12 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
         }
     }
 
-    override fun loadTaskConfigEditRow() {
-        val lists = java.util.ArrayList<AddEditTaskItemModel>()
-        val model = AddEditTaskItemModel
-        lists.add(AddEditTaskItemModel(R.id.edit_include_detail, R.drawable.ic_notes_white_24dp, model.EDITTEXT, hintText = "詳細"))
-        lists.add(AddEditTaskItemModel(R.id.edit_include_limittime, R.drawable.ic_access_time_white_24dp, model.TEXTVIEW, text = "12:00"))
-        lists.add(AddEditTaskItemModel(R.id.edit_include_notificationtime, R.drawable.ic_notifications_white_24dp, model.SPINNER, spinnerItem = arrayListOf("1H前", "2H前", "12時")))
-        lists.add(AddEditTaskItemModel(R.id.edit_include_weekgroup, R.drawable.ic_today_white_24dp, model.SPINNER, spinnerItem = arrayListOf("月", "火", "水", "木", "金", "土", "日")))
-        addEditTaskView.setTaskConfigEditRow(lists)
+    override fun loadTaskConfigEditRow(model:TaskDataModel?) {
+        val ITEM = AddEditTaskItemModel
+        lists.add(AddEditTaskItemModel(R.id.edit_include_detail, R.drawable.ic_notes_white_24dp, ITEM.EDITTEXT, hintText = "詳細", text = model?.detail ?: "" ))
+        lists.add(AddEditTaskItemModel(R.id.edit_include_limittime, R.drawable.ic_access_time_white_24dp, ITEM.TEXTVIEW, text = "12:00"))
+        lists.add(AddEditTaskItemModel(R.id.edit_include_notificationtime, R.drawable.ic_notifications_white_24dp, ITEM.SPINNER, spinnerItem = arrayListOf("1H前", "2H前", "12時")))
+        lists.add(AddEditTaskItemModel(R.id.edit_include_weekgroup, R.drawable.ic_today_white_24dp, ITEM.SPINNER, spinnerItem = arrayListOf("月", "火", "水", "木", "金", "土", "日")))
     }
 
     // 新規のタスク
@@ -57,7 +56,7 @@ class AddEditTaskPresenter(val addEditTaskView: AddEditTaskContract.View) : AddE
     }
 
     override fun start() {
-        loadTaskConfigEditRow()
+        addEditTaskView.setTaskConfigEditRow(lists)
     }
 
 }

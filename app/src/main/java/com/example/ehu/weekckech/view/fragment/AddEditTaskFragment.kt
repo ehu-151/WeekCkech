@@ -44,7 +44,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         super.onViewCreated(view, savedInstanceState)
         // argsの取得
         val args = arguments
-        val taskId = args?.getInt(AddEditTaskActivity().EXTRA_TASK_ID,-1)
+        val model = args?.getSerializable(AddEditTaskActivity().EXTRA_TASK_ID) as TaskDataModel?
 
         // Contextの格納
         mContext = view.context
@@ -83,6 +83,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
 
         binding.nextItem.setOnClickListener { /*TODO Click処理*/ }
         binding.prevItem.setOnClickListener { /*TODO Click処理*/ }
+
+        // 初期テキストのセット
+        presenter.loadTaskConfigEditRow(model)
         presenter.start()
     }
 
@@ -93,6 +96,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             layout.findViewById<ImageView>(com.example.ehu.weekckech.R.id.imageView).setImageResource(list.imageId)
             if (list.componentType == model.EDITTEXT) {
                 layout.findViewById<EditText>(com.example.ehu.weekckech.R.id.editText).hint = list.hintText
+                layout.findViewById<EditText>(com.example.ehu.weekckech.R.id.editText).setText(list.text)
 
             } else if (list.componentType == model.SPINNER) {
                 // スピナーのレイアウト指定
