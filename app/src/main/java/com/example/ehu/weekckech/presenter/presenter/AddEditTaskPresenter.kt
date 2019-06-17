@@ -3,8 +3,6 @@ package com.example.ehu.weekckech.presenter.presenter
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
 import com.example.ehu.weekckech.data.sql.TaskDataModel
@@ -30,7 +28,8 @@ class AddEditTaskPresenter(private val addEditTaskView: AddEditTaskContract.View
                 ?: "12:00"))
         lists.add(AddEditTaskItemModel(R.id.edit_include_notificationtime, R.drawable.ic_notifications_white_24dp, AddEditTaskItemModel.SPINNER, spinnerItem = arrayListOf("1H前", "2H前", "12時"), selection = model?.notificationTime
                 ?: ""))
-        lists.add(AddEditTaskItemModel(R.id.edit_include_weekgroup, R.drawable.ic_today_white_24dp, AddEditTaskItemModel.SPINNER, spinnerItem = arrayListOf("月", "火", "水", "木", "金", "土", "日")))
+        lists.add(AddEditTaskItemModel(R.id.edit_include_weekgroup, R.drawable.ic_today_white_24dp, AddEditTaskItemModel.SPINNER, spinnerItem = arrayListOf("月", "火", "水", "木", "金", "土", "日"), selection = model?.weekGroup
+                ?: ""))
     }
 
     // nullなら新規のタスクでsave,taskIdが既知なら更新
