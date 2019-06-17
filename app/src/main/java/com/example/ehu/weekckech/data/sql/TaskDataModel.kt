@@ -8,5 +8,5 @@ data class TaskDataModel(
         val detail: String,
         val limitTime: String?,
         val notificationTime: String?,
-        val weekGroup: Int
+        val weekGroup: String
 ) : Serializable

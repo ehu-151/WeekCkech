@@ -33,7 +33,7 @@ class TasksAdapter(
     /**
      * weekGroupからGroupの数値を返します。
      */
-    private fun getHeaderItem(position: Int): Int {
+    private fun getHeaderItem(position: Int): String {
         return rows[position].weekGroup
     }
 
@@ -51,16 +51,7 @@ class TasksAdapter(
         v.tag = holder
 
         // itemのセット
-        holder.headerName.text = when (rows[position].weekGroup) {
-            0 -> "日"
-            1 -> "月"
-            2 -> "火"
-            3 -> "水"
-            4 -> "木"
-            5 -> "金"
-            6 -> "土"
-            else -> "日"
-        }
+        holder.headerName.text = rows[position].weekGroup
 
         return v as View
     }

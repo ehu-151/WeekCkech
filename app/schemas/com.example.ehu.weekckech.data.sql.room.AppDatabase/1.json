@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "85fbdc4c6bcd896e0f4a5385c063d265",
+    "identityHash": "3ffb8a55ed68df5f3d0cd336fd563383",
     "entities": [
       {
         "tableName": "RoomTask",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`taskId` INTEGER NOT NULL, `lastUpdate` INTEGER, `isChecked` INTEGER NOT NULL, `detail` TEXT NOT NULL, `limitTime` TEXT, `notificationTime` TEXT, `weekGroup` INTEGER NOT NULL, PRIMARY KEY(`taskId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`taskId` INTEGER NOT NULL, `lastUpdate` INTEGER, `isChecked` INTEGER NOT NULL, `detail` TEXT NOT NULL, `limitTime` TEXT, `notificationTime` TEXT, `weekGroup` TEXT NOT NULL, PRIMARY KEY(`taskId`))",
         "fields": [
           {
             "fieldPath": "taskId",
@@ -47,7 +47,7 @@
           {
             "fieldPath": "weekGroup",
             "columnName": "weekGroup",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           }
         ],
@@ -64,7 +64,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"85fbdc4c6bcd896e0f4a5385c063d265\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3ffb8a55ed68df5f3d0cd336fd563383\")"
     ]
   }
 }

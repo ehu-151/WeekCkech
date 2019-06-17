@@ -55,16 +55,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             val detail = binding.editIncludeDetail.editText.text.toString()
             val limitTime = binding.editIncludeLimittime.textView.text.toString()
             val notificationTime = binding.editIncludeNotificationtime.spinner.selectedItem.toString()
-            val weekGroup = when (binding.editIncludeWeekgroup.spinner.selectedItem.toString()) {
-                "日" -> 0
-                "月" -> 1
-                "火" -> 2
-                "水" -> 3
-                "木" -> 4
-                "金" -> 5
-                "土" -> 6
-                else -> 0
-            }
+            val weekGroup = binding.editIncludeWeekgroup.spinner.selectedItem.toString()
 
             // 詳細が記入されているなら、save
             if (detail != "") {
@@ -106,7 +97,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                 adapter.addAll(list.spinnerItem)
                 val spinner = layout.findViewById<Spinner>(com.example.ehu.weekckech.R.id.spinner)
                 spinner.adapter = adapter
-                spinner.setSelection(list.spinnerItem!!.indexOf(list.selection))
+                if (list.selection != "") {
+                    spinner.setSelection(list.spinnerItem!!.indexOf(list.selection))
+                }
             } else if (list.componentType == model.TEXTVIEW) {
                 layout.findViewById<TextView>(com.example.ehu.weekckech.R.id.textView).text = list.text
             }

@@ -62,7 +62,9 @@ class PagerDayPresenter(private val pagerDayView: PagerDayConstract.View, privat
     }
 
     private fun getDao(): RoomTaskDao {
-        return Room.databaseBuilder(mContext, AppDatabase::class.java, "database-name").build().roomTaskDao()
+        return Room.databaseBuilder(mContext, AppDatabase::class.java, AppDatabase.DB_NAME)
+                .build()
+                .roomTaskDao()
     }
 
     /**

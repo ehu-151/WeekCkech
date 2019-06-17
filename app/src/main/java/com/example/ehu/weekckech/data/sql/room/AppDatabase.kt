@@ -9,7 +9,10 @@ import java.util.*
 @Database(entities = arrayOf(RoomTask::class), version = 1)
 @TypeConverters(DateTimeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
+    companion object {
+        const val DB_NAME = "todo-database"
 
+    }
     // DAOを取得する。
     abstract fun roomTaskDao(): RoomTaskDao
 }
