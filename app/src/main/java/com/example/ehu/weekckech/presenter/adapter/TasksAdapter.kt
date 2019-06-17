@@ -22,7 +22,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
  * クリックリスナーをセットしています。
  */
 class TasksAdapter(
-        val context: Context, val rows: ArrayList<TaskDataModel>, val presenter: PagerDayConstract.Presenter)
+        val context: Context, private val rows: ArrayList<TaskDataModel>, val presenter: PagerDayConstract.Presenter)
     : BaseAdapter(), StickyListHeadersAdapter {
 
     val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -33,8 +33,8 @@ class TasksAdapter(
     /**
      * weekGroupからGroupの数値を返します。
      */
-    fun getHeaderItem(posion: Int): Int {
-        return rows[posion].weekGroup
+    private fun getHeaderItem(position: Int): Int {
+        return rows[position].weekGroup
     }
 
     override fun getHeaderView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -42,9 +42,9 @@ class TasksAdapter(
 
         // Headerとitemの条件分岐
 
-        // 前の日付グループと同じならlistitemの追加
+        // 前の日付グループと同じならlist itemの追加
         v = inflater.inflate(R.layout.pager_day_listheader, null)
-        var holder = TasksAdapter.HeaderHolder(
+        var holder = HeaderHolder(
                 v?.findViewById(R.id.header_title) as TextView
         )
         // リサイクルするときのためにタグ付けしておく
@@ -86,9 +86,9 @@ class TasksAdapter(
 
         // Headerとitemの条件分岐
 
-        // 前の日付グループと同じならlistitemの追加
+        // 前の日付グループと同じならlist itemの追加
         v = inflater.inflate(R.layout.pager_day_listitem, null)
-        val holder = TasksAdapter.ItemHolder(
+        val holder = ItemHolder(
                 v.findViewById(R.id.pager_day_listitem_checkbox) as CheckBox,
                 v.findViewById(R.id.pager_day_listitem_detail) as TextView
         )
@@ -101,7 +101,7 @@ class TasksAdapter(
 
         // クリックアダプターのセット
         v.findViewById<ConstraintLayout>(R.id.constraintLayout3).setOnClickListener {
-            Log.d("setOnClickListener", "item_layout:" + position.toString())
+            Log.d("setOnClickListener", "item_layout:$position")
             presenter.editDayTask(rows[position])
         }
 
