@@ -11,7 +11,7 @@ import kotlinx.coroutines.runBlocking
 import kotlin.concurrent.thread
 
 
-class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: Context) : PagerDayConstract.Presenter {
+class PagerDayPresenter(private val pagerDayView: PagerDayConstract.View, private val mContext: Context) : PagerDayConstract.Presenter {
 
     var taskLiveData = MutableLiveData<ArrayList<TaskDataModel>>()
     /**
