@@ -104,7 +104,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                 // プルダウンレイアウト指定
                 adapter.setDropDownViewResource(com.example.ehu.weekckech.R.layout.spinner_item)
                 adapter.addAll(list.spinnerItem)
-                layout.findViewById<Spinner>(com.example.ehu.weekckech.R.id.spinner).adapter = adapter
+                val spinner = layout.findViewById<Spinner>(com.example.ehu.weekckech.R.id.spinner)
+                spinner.adapter = adapter
+                spinner.setSelection(list.spinnerItem!!.indexOf(list.selection))
             } else if (list.componentType == model.TEXTVIEW) {
                 layout.findViewById<TextView>(com.example.ehu.weekckech.R.id.textView).text = list.text
             }
