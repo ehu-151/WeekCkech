@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/click_area"
         android:layout_width="0dp"
         android:layout_height="84dp"
         android:layout_marginBottom="8dp"

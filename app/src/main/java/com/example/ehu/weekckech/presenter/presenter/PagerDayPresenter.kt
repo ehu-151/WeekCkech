@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.data.sql.room.AppDatabase
+import com.example.ehu.weekckech.data.sql.room.RoomTaskDao
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
 import kotlinx.coroutines.runBlocking
 import kotlin.concurrent.thread
@@ -20,8 +21,7 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
         val list = ArrayList<TaskDataModel>()
         runBlocking {
             thread {
-                val db = Room.databaseBuilder(mContext, AppDatabase::class.java, "database-name").build()
-                val result = db.roomTaskDao().getAll()
+                val result = getDao().getAll()
 
                 result.forEach { list.add(TaskDataModel(it.taskId, it.isChecked, it.detail, it.limitTime, it.notificationTime, it.weekGroup)) }
                 taskLiveData.postValue(list)
@@ -30,11 +30,13 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
         pagerDayView.showDaysTasks(taskLiveData)
     }
 
-    override fun completeDaysTask() {
+    // taskをcheckにする
+    override fun checkTask() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun activateDaysTask() {
+    // taskをunCheckにする
+    override fun unCheckTask() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -49,6 +51,10 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
 
     override fun clearCompleteTasks() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun getDao(): RoomTaskDao {
+        return Room.databaseBuilder(mContext, AppDatabase::class.java, "database-name").build().roomTaskDao()
     }
 
     /**

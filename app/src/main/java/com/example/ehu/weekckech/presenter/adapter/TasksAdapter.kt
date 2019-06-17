@@ -100,9 +100,18 @@ class TasksAdapter(
         holder.detail.text = rows[position].detail
 
         // クリックアダプターのセット
-        v.findViewById<ConstraintLayout>(R.id.constraintLayout3).setOnClickListener {
+        v.findViewById<ConstraintLayout>(R.id.click_area).setOnClickListener {
             Log.d("setOnClickListener", "item_layout:$position")
             presenter.editDayTask(rows[position])
+        }
+        v.findViewById<CheckBox>(R.id.pager_day_listitem_checkbox).setOnCheckedChangeListener { buttonView, isChecked ->
+            Log.d("setOnClickListener", "item_layout:$position")
+            // activate/off切り替え
+            if (isChecked) {
+                presenter.checkTask()
+            } else {
+                presenter.unCheckTask()
+            }
         }
 
         return v as View
