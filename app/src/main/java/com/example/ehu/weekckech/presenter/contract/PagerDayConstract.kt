@@ -15,8 +15,8 @@ interface PagerDayConstract {
 
     interface Presenter : BasePresenter {
         fun loadDaysTasks()
-        fun checkTask()
-        fun unCheckTask()
+        fun checkTask(taskId: Int)
+        fun unCheckTask(taskId: Int)
         fun addNewDayTask()
         fun editDayTask(model: TaskDataModel)
         fun clearCompleteTasks()

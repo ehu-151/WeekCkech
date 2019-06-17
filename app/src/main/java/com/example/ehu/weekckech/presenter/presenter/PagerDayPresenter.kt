@@ -31,13 +31,21 @@ class PagerDayPresenter(val pagerDayView: PagerDayConstract.View, val mContext: 
     }
 
     // taskをcheckにする
-    override fun checkTask() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun checkTask(taskId: Int) {
+        runBlocking {
+            thread {
+                getDao().changeTaskCheck(taskId, true)
+            }
+        }
     }
 
     // taskをunCheckにする
-    override fun unCheckTask() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun unCheckTask(taskId: Int) {
+        runBlocking {
+            thread {
+                getDao().changeTaskCheck(taskId, false)
+            }
+        }
     }
 
     override fun addNewDayTask() {

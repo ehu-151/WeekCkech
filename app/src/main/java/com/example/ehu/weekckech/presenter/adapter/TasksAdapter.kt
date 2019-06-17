@@ -108,9 +108,9 @@ class TasksAdapter(
             Log.d("setOnClickListener", "item_layout:$position")
             // activate/off切り替え
             if (isChecked) {
-                presenter.checkTask()
+                presenter.checkTask(rows[position].taskId!!)
             } else {
-                presenter.unCheckTask()
+                presenter.unCheckTask(rows[position].taskId!!)
             }
         }
 
