@@ -68,7 +68,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
 
             // 詳細が記入されているなら、save
             if (detail != "") {
-                presenter.saveTask(TaskDataModel(detail = detail, limitTime = limitTime,
+                presenter.saveTask(TaskDataModel(taskId = model?.taskId, detail = detail, limitTime = limitTime,
                         notificationTime = notificationTime, weekGroup = weekGroup), mContext)
             } else {
                 Toast.makeText(mContext, "何も書かれていません。", Toast.LENGTH_SHORT).show()
