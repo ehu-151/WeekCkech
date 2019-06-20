@@ -1,13 +1,14 @@
 package com.example.ehu.weekckech.view.fragment
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.databinding.PagerDayBinding
@@ -25,17 +26,22 @@ import com.example.ehu.weekckech.presenter.presenter.PagerDayPresenter
  */
 class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     // セットする変数の宣言
-    override var presenter: PagerDayConstract.Presenter = PagerDayPresenter(this)
+    override lateinit var presenter: PagerDayConstract.Presenter
     lateinit var binding: PagerDayBinding
     private lateinit var mContext: Context
 
-    override fun showDaysTasks(taskDataModel: ArrayList<TaskDataModel>) {
-        binding.listView.adapter = TasksAdapter(mContext, taskDataModel, presenter)
+    override fun showDaysTasks(taskDataModel: MutableLiveData<ArrayList<TaskDataModel>>) {
+        taskDataModel.observe(this, Observer {
+            binding.listView.adapter = TasksAdapter(mContext, it, presenter)
+        })
     }
 
-    override fun showAddEditTask() {
-        var mIntent = Intent(this.mContext, AddEditTaskActivity::class.java)
-        startActivity(mIntent)
+    override fun showAddTask() {
+        startActivity(AddEditTaskActivity.createIntent(context))
+    }
+
+    override fun showEditTask(model: TaskDataModel) {
+        startActivity(AddEditTaskActivity.createIntent(context, model))
     }
 
     override fun showDayTasks() {
@@ -46,18 +52,19 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.pager_day, container, false)
         val root = binding.root
-        binding.presenter = presenter
         return root
     }
 
     override fun onResume() {
         super.onResume()
-        // タスクのロード、ロジックはプレゼンターでやる
+        // タスクのロード
         presenter.start()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter = PagerDayPresenter(this, view.context)
+        binding.presenter = presenter
         // Contextの格納
         mContext = view.context
     }

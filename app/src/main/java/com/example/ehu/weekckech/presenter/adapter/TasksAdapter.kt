@@ -22,7 +22,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
  * クリックリスナーをセットしています。
  */
 class TasksAdapter(
-        val context: Context, val rows: ArrayList<TaskDataModel>, val presenter: PagerDayConstract.Presenter)
+        val context: Context, private val rows: ArrayList<TaskDataModel>, val presenter: PagerDayConstract.Presenter)
     : BaseAdapter(), StickyListHeadersAdapter {
 
     val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -33,17 +33,8 @@ class TasksAdapter(
     /**
      * weekGroupからGroupの数値を返します。
      */
-    fun getHeaderItem(posion: Int): Int {
-        return when (rows[posion].weekGroup) {
-            "月" -> 0
-            "火" -> 1
-            "水" -> 2
-            "木" -> 3
-            "金" -> 4
-            "土" -> 5
-            "日" -> 6
-            else -> 7
-        }
+    private fun getHeaderItem(position: Int): String {
+        return rows[position].weekGroup
     }
 
     override fun getHeaderView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -51,9 +42,9 @@ class TasksAdapter(
 
         // Headerとitemの条件分岐
 
-        // 前の日付グループと同じならlistitemの追加
+        // 前の日付グループと同じならlist itemの追加
         v = inflater.inflate(R.layout.pager_day_listheader, null)
-        var holder = TasksAdapter.HeaderHolder(
+        var holder = HeaderHolder(
                 v?.findViewById(R.id.header_title) as TextView
         )
         // リサイクルするときのためにタグ付けしておく
@@ -86,9 +77,9 @@ class TasksAdapter(
 
         // Headerとitemの条件分岐
 
-        // 前の日付グループと同じならlistitemの追加
+        // 前の日付グループと同じならlist itemの追加
         v = inflater.inflate(R.layout.pager_day_listitem, null)
-        val holder = TasksAdapter.ItemHolder(
+        val holder = ItemHolder(
                 v.findViewById(R.id.pager_day_listitem_checkbox) as CheckBox,
                 v.findViewById(R.id.pager_day_listitem_detail) as TextView
         )
@@ -100,8 +91,18 @@ class TasksAdapter(
         holder.detail.text = rows[position].detail
 
         // クリックアダプターのセット
-        v.findViewById<ConstraintLayout>(R.id.constraintLayout3).setOnClickListener {
-            Log.d("setOnClickListener", "item_layout:" + position.toString())
+        v.findViewById<ConstraintLayout>(R.id.click_area).setOnClickListener {
+            Log.d("setOnClickListener", "item_layout:$position")
+            presenter.editDayTask(rows[position])
+        }
+        v.findViewById<CheckBox>(R.id.pager_day_listitem_checkbox).setOnCheckedChangeListener { buttonView, isChecked ->
+            Log.d("setOnClickListener", "item_layout:$position")
+            // activate/off切り替え
+            if (isChecked) {
+                presenter.checkTask(rows[position].taskId!!)
+            } else {
+                presenter.unCheckTask(rows[position].taskId!!)
+            }
         }
 
         return v as View

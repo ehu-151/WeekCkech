@@ -1,26 +1,24 @@
 package com.example.ehu.weekckech.data.sql.room
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.ehu.weekckech.data.sql.TaskDataModel
+import java.util.*
 
 @Entity
-class RoomTask {
-    @PrimaryKey
-    var taskId: Int=0
+data class RoomTask(
+        @PrimaryKey
+        val taskId: Int = Random().nextInt(),
 
-    @ColumnInfo(name = "isChecked")
-    var isChecked: Boolean=false
+        val lastUpdate: Date?,
 
-    @ColumnInfo(name = "detail")
-    lateinit var detail: String
+        val isChecked: Boolean = false,
 
-    @ColumnInfo(name = "limitTime")
-    var limitTime: String?=null
+        val detail: String,
 
-    @ColumnInfo(name = "notificationTime")
-    var notificationTime: String?=null
+        val limitTime: String? = null,
 
-    @ColumnInfo(name = "weekGroup")
-    lateinit var weekGroup: String
-}
+        val notificationTime: String? = null,
+
+        val weekGroup: String
+)

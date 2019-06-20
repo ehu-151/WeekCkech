@@ -16,12 +16,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.databinding.FragmentAddEditTaskBinding
+import com.example.ehu.weekckech.presenter.activity.AddEditTaskActivity
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
+import kotlinx.coroutines.runBlocking
 import java.util.*
 
 
@@ -34,13 +35,17 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_edit_task, container, false)
+        binding = DataBindingUtil.inflate(inflater, com.example.ehu.weekckech.R.layout.fragment_add_edit_task, container, false)
         binding.presenter = presenter
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // argsの取得
+        val args = arguments
+        val model = args?.getSerializable(AddEditTaskActivity().EXTRA_TASK_ID) as TaskDataModel?
+
         // Contextの格納
         mContext = view.context
         mView = view
@@ -52,16 +57,26 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             val notificationTime = binding.editIncludeNotificationtime.spinner.selectedItem.toString()
             val weekGroup = binding.editIncludeWeekgroup.spinner.selectedItem.toString()
 
-            presenter.saveTask(TaskDataModel(detail = detail, limitTime = limitTime,
-                    notificationTime = notificationTime, weekGroup = weekGroup), mContext)
+            // 詳細が記入されているなら、save
+            if (detail != "") {
+                presenter.saveTask(TaskDataModel(taskId = model?.taskId, detail = detail, limitTime = limitTime,
+                        notificationTime = notificationTime, weekGroup = weekGroup), mContext)
+            } else {
+                Toast.makeText(mContext, "何も書かれていません。", Toast.LENGTH_SHORT).show()
+            }
+
         }
         // OnClickのTimePicker
         binding.editIncludeLimittime.textView.setOnClickListener {
             showTimePicker()
         }
         binding.editLeaveButton.setOnClickListener { showTasksMain() }
+
         binding.nextItem.setOnClickListener { /*TODO Click処理*/ }
         binding.prevItem.setOnClickListener { /*TODO Click処理*/ }
+
+        // 初期テキストのセット
+        presenter.loadTaskConfigEditRow(model)
         presenter.start()
     }
 
@@ -69,67 +84,56 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         for (list in listItemModel) {
             val model = AddEditTaskItemModel
             val layout: ConstraintLayout = mView.findViewById(list.layoutid)
-            layout.findViewById<ImageView>(R.id.imageView).setImageResource(list.imageId)
+            layout.findViewById<ImageView>(com.example.ehu.weekckech.R.id.imageView).setImageResource(list.imageId)
             if (list.componentType == model.EDITTEXT) {
-                layout.findViewById<EditText>(R.id.editText).hint = list.hintText
+                layout.findViewById<EditText>(com.example.ehu.weekckech.R.id.editText).hint = list.hintText
+                layout.findViewById<EditText>(com.example.ehu.weekckech.R.id.editText).setText(list.text)
 
             } else if (list.componentType == model.SPINNER) {
                 // スピナーのレイアウト指定
-                val adapter = ArrayAdapter<String>(mContext, R.layout.spinner_item)
+                val adapter = ArrayAdapter<String>(mContext, com.example.ehu.weekckech.R.layout.spinner_item)
                 // プルダウンレイアウト指定
-                adapter.setDropDownViewResource(R.layout.spinner_item)
+                adapter.setDropDownViewResource(com.example.ehu.weekckech.R.layout.spinner_item)
                 adapter.addAll(list.spinnerItem)
-                layout.findViewById<Spinner>(R.id.spinner).adapter = adapter
+                val spinner = layout.findViewById<Spinner>(com.example.ehu.weekckech.R.id.spinner)
+                spinner.adapter = adapter
+                if (list.selection != "") {
+                    spinner.setSelection(list.spinnerItem!!.indexOf(list.selection))
+                }
             } else if (list.componentType == model.TEXTVIEW) {
-                layout.findViewById<TextView>(R.id.textView).text = list.text
+                layout.findViewById<TextView>(com.example.ehu.weekckech.R.id.textView).text = list.text
             }
         }
     }
 
     override fun showTasksMain() {
-        hideKeybord()
         activity?.finish()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        hideKeybord()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        hideKeybord()
     }
 
     override fun onResume() {
         super.onResume()
-        showKeybord()
+        //ホームから復帰した時
+        showKeyboard()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        showKeybord()
-    }
-
-    override fun hideKeybord() {
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
-    }
-
-    override fun showKeybord() {
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+    override fun showKeyboard() {
+        // 100だと、キーボードが表示されない
+        runBlocking {
+            binding.editIncludeDetail.editText.postDelayed(Runnable {
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                binding.editIncludeDetail.editText.requestFocus()
+                imm.showSoftInput(binding.editIncludeDetail.editText, 0)
+            }, 200)
+        }
     }
 
     private fun showTimePicker() {
         class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
-
             override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
                 // Use the current time as the default values for the picker
                 val c = Calendar.getInstance()
                 val hour = c.get(Calendar.HOUR_OF_DAY)
                 val minute = c.get(Calendar.MINUTE)
-
 
                 // Create a new instance of TimePickerDialog and return it
                 return TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
@@ -142,8 +146,18 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
     }
 
-    fun setLimitTime(limitTime: String) {
+    private fun setLimitTime(limitTime: String) {
         binding.editIncludeLimittime.textView.text = limitTime
+    }
+
+    companion object {
+        fun newInstance(model: TaskDataModel?): AddEditTaskFragment {
+            val fragment = AddEditTaskFragment()
+            val args = Bundle()
+            args.putSerializable(AddEditTaskActivity().EXTRA_TASK_ID, model)
+            fragment.arguments = args
+            return fragment
+        }
     }
 
 }
