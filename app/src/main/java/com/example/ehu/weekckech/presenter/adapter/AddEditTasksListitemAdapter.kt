@@ -69,7 +69,7 @@ class AddEditTasksListitemAdapter(
         // スピナーのレイアウト指定
         val adapter = ArrayAdapter<String>(mContext, R.layout.spinner_item)
         // プルダウンレイアウト指定
-        adapter.setDropDownViewResource(R.layout.spinner_item)
+//        adapter.setDropDownViewResource(R.layout.spinner_item)
         adapter.addAll(menu)
         spinner.adapter=adapter
     }

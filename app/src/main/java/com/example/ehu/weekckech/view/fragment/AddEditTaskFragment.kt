@@ -93,7 +93,6 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                 // スピナーのレイアウト指定
                 val adapter = ArrayAdapter<String>(mContext, com.example.ehu.weekckech.R.layout.spinner_item)
                 // プルダウンレイアウト指定
-                adapter.setDropDownViewResource(com.example.ehu.weekckech.R.layout.spinner_item)
                 adapter.addAll(list.spinnerItem)
                 val spinner = layout.findViewById<Spinner>(com.example.ehu.weekckech.R.id.spinner)
                 spinner.adapter = adapter
