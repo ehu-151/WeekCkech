@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.presenter.contract.PagerDayConstract
+import com.example.ehu.weekckech.util.TaskNotification
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter
 
 /**
@@ -93,6 +94,7 @@ class TasksAdapter(
         // クリックアダプターのセット
         v.findViewById<ConstraintLayout>(R.id.click_area).setOnClickListener {
             Log.d("setOnClickListener", "item_layout:$position")
+            TaskNotification(context).notifyTaskNowLimit(rows[position])
             presenter.editDayTask(rows[position])
         }
         v.findViewById<CheckBox>(R.id.pager_day_listitem_checkbox).setOnCheckedChangeListener { buttonView, isChecked ->
