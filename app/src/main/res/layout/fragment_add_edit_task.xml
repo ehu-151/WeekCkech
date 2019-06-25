@@ -73,7 +73,7 @@
 
         <include
             android:id="@+id/edit_include_notificationtime"
-            layout="@layout/add_edit_task_listitem_notification"
+            layout="@layout/add_edit_task_listitem_notificationtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

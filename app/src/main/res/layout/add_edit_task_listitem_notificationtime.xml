@@ -21,7 +21,7 @@
 
         <Spinner
             android:id="@+id/spinner"
-            style="@style/TextApper.listViewAddEditTaskActivity.ListItem.Title"
+            style="@style/TextApper.listViewAddEditTaskActivity.ListItem.NotificationTime"
             android:layout_width="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
