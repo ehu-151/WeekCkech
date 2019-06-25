@@ -33,7 +33,7 @@ class AddEditTasksListitemAdapter(
 
     private fun getViewTextView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var v = convertView
-        v = inflater.inflate(R.layout.add_edit_task_listitem_details, null)
+        v = inflater.inflate(R.layout.add_edit_task_listitem_detail, null)
         val holder = AddEditTasksListitemAdapter.ItemHolderTextView(
                 v.findViewById(R.id.imageView) as ImageView,
                 v.findViewById(R.id.editText) as EditText
