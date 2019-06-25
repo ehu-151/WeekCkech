@@ -33,7 +33,7 @@ class AddEditTasksListitemAdapter(
 
     private fun getViewTextView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var v = convertView
-        v = inflater.inflate(R.layout.add_edit_task_listitem_edittext, null)
+        v = inflater.inflate(R.layout.add_edit_task_listitem_details, null)
         val holder = AddEditTasksListitemAdapter.ItemHolderTextView(
                 v.findViewById(R.id.imageView) as ImageView,
                 v.findViewById(R.id.editText) as EditText
@@ -50,7 +50,7 @@ class AddEditTasksListitemAdapter(
 
     private fun getViewSpinner(position: Int, convertView: View?, parent: ViewGroup?): View? {
         var v = convertView
-        v = inflater.inflate(R.layout.add_edit_task_listitem_spinner, null)
+        v = inflater.inflate(R.layout.add_edit_task_listitem_weekgroup, null)
         val holder = AddEditTasksListitemAdapter.ItemHolderSpinner(
                 v.findViewById(R.id.imageView) as ImageView,
                 v.findViewById(R.id.spinner) as Spinner

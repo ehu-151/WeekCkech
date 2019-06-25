@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -18,7 +17,7 @@
 
         <include
             android:id="@+id/edit_include_detail"
-            layout="@layout/add_edit_task_listitem_edittext"
+            layout="@layout/add_edit_task_listitem_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +35,7 @@
 
         <include
             android:id="@+id/edit_include_limittime"
-            layout="@layout/add_edit_task_listitem_textview"
+            layout="@layout/add_edit_task_listitem_limittime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +54,7 @@
 
         <include
             android:id="@+id/edit_include_notificationtime"
-            layout="@layout/add_edit_task_listitem_spinner"
+            layout="@layout/add_edit_task_listitem_weekgroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +72,7 @@
 
         <include
             android:id="@+id/edit_include_weekgroup"
-            layout="@layout/add_edit_task_listitem_spinner"
+            layout="@layout/add_edit_task_listitem_weekgroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
