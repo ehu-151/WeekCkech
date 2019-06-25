@@ -95,7 +95,6 @@ class TasksAdapter(
         v.findViewById<ConstraintLayout>(R.id.click_area).setOnClickListener {
             Log.d("setOnClickListener", "item_layout:$position")
             TaskNotification(context).notifyTaskNowLimit(rows[position])
-            TaskNotification(context).notifyTaskDailyReport(true)
             presenter.editDayTask(rows[position])
         }
         v.findViewById<CheckBox>(R.id.pager_day_listitem_checkbox).setOnCheckedChangeListener { buttonView, isChecked ->

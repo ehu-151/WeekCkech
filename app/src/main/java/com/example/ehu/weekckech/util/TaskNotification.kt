@@ -72,11 +72,18 @@ class TaskNotification(val context: Context) {
     }
 
     private fun getNotificationBuilder(title: String, subText: String?, contentText: String): Notification {
-        val builder = NotificationCompat.Builder(context, CHANNEL_ID).apply {
+        // contentTextのstyle、改行する
+        val style=Notification.InboxStyle().apply {
+            contentText.split("\n").forEach {
+                addLine(it)
+            }
+        }
+        val builder = Notification.Builder(context, CHANNEL_ID).apply {
             setSmallIcon(icon_res)
             setContentTitle(title)
             setSubText(subText)
             setContentText(contentText)
+            setStyle(style)
         }
 
         return builder.build()
