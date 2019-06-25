@@ -10,13 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.ArrayAdapter
+import android.widget.TimePicker
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.example.ehu.weekckech.data.sql.AddEditTaskItemModel
+import com.example.ehu.weekckech.R
 import com.example.ehu.weekckech.data.sql.TaskDataModel
 import com.example.ehu.weekckech.databinding.FragmentAddEditTaskBinding
 import com.example.ehu.weekckech.presenter.activity.AddEditTaskActivity
@@ -44,7 +45,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         super.onViewCreated(view, savedInstanceState)
         // argsの取得
         val args = arguments
-        val model = args?.getSerializable(AddEditTaskActivity().EXTRA_TASK_ID) as TaskDataModel?
+        val model = args?.getSerializable(AddEditTaskActivity().EXTRA_TASK_ID) as TaskDataModel
 
         // Contextの格納
         mContext = view.context
@@ -80,29 +81,22 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         presenter.start()
     }
 
-    override fun setTaskConfigEditRow(listItemModel: ArrayList<AddEditTaskItemModel>) {
-        for (list in listItemModel) {
-            val model = AddEditTaskItemModel
-            val layout: ConstraintLayout = mView.findViewById(list.layoutid)
-            layout.findViewById<ImageView>(com.example.ehu.weekckech.R.id.imageView).setImageResource(list.imageId)
-            if (list.componentType == model.EDITTEXT) {
-                layout.findViewById<EditText>(com.example.ehu.weekckech.R.id.editText).hint = list.hintText
-                layout.findViewById<EditText>(com.example.ehu.weekckech.R.id.editText).setText(list.text)
-
-            } else if (list.componentType == model.SPINNER) {
-                // スピナーのレイアウト指定
-                val adapter = ArrayAdapter<String>(mContext, com.example.ehu.weekckech.R.layout.spinner_item)
-                // プルダウンレイアウト指定
-                adapter.setDropDownViewResource(com.example.ehu.weekckech.R.layout.spinner_item)
-                adapter.addAll(list.spinnerItem)
-                val spinner = layout.findViewById<Spinner>(com.example.ehu.weekckech.R.id.spinner)
-                spinner.adapter = adapter
-                if (list.selection != "") {
-                    spinner.setSelection(list.spinnerItem!!.indexOf(list.selection))
-                }
-            } else if (list.componentType == model.TEXTVIEW) {
-                layout.findViewById<TextView>(com.example.ehu.weekckech.R.id.textView).text = list.text
-            }
+    override fun setTaskConfigEditRow(model: TaskDataModel) {
+        // Detail
+        binding.editIncludeDetail.editText.apply {
+            setText(model.detail)
+        }
+        // LimitTime
+        binding.editIncludeLimittime.textView.apply {
+            text = model.limitTime
+        }
+        // WeekGroup
+        val itemAdapter = ArrayAdapter<String>(mContext, R.layout.spinner_item)
+        val array = resources.getStringArray(R.array.edit_weekgroup_init)
+        array.forEach { itemAdapter.add(it) }
+        binding.editIncludeWeekgroup.spinner.apply {
+            adapter = itemAdapter
+            setSelection(array.indexOf(model.weekGroup))
         }
     }
 

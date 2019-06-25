@@ -23,7 +23,7 @@ class PagerDayPresenter(private val pagerDayView: PagerDayConstract.View, privat
             thread {
                 val result = getDao().getAll()
 
-                result.forEach { list.add(TaskDataModel(it.taskId, it.isChecked, it.detail, it.limitTime, it.notificationTime, it.weekGroup)) }
+                result.forEach { list.add(TaskDataModel(it.taskId, it.isChecked, it.detail, it.limitTime, it.notificationTime?.get(0), it.weekGroup)) }
                 taskLiveData.postValue(list)
             }
         }

@@ -2,14 +2,23 @@
     <string name="app_name">WeekCkech</string>
     <string name="tab_day">日</string>
     <string name="tab_week">週</string>
-    <string name="todo_title_init">title</string>
+    <string name="edit_detail_init">詳細</string>
+    <string name="edit_limittime_init">12:00</string>
+    <string-array name="edit_weekgroup_init">
+        <item>月</item>
+        <item>火</item>
+        <item>水</item>
+        <item>木</item>
+        <item>金</item>
+        <item>土</item>
+        <item>日</item>
+    </string-array>
     <string name="day_of_week">曜</string>
     <string name="planed_numder">予定数</string>
     <string name="edit_activity_title">編集</string>
     <string name="edit_save_button">保存する</string>
     <string name="edot_leave_button">やめる</string>
     <string name="no_detail">You type TODO detail on here.</string>
-    <string name="init_time">12:00</string>
     <string name="next_item">前の項目に移動</string>
     <string name="prev_item">次の項目に移動</string>
 </resources>

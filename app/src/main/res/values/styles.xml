@@ -115,8 +115,23 @@
     <style name="TextApper.listViewAddEditTaskActivity.ListItem">
         <item name="android:textSize">15sp</item>
     </style>
-    <!--ListItem,Title-->
-    <style name="TextApper.listViewAddEditTaskActivity.ListItem.Title">
+    <!--ListItem,detail-->
+    <style name="TextApper.listViewAddEditTaskActivity.ListItem.Detail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColorHint">@color/colorCharDark</item>
+    </style>
+    <!--ListItem,limittime-->
+    <style name="TextApper.listViewAddEditTaskActivity.ListItem.LimitTime">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColorHint">@color/colorCharDark</item>
+    </style>
+    <!--ListItem,weekgroup-->
+    <style name="TextApper.listViewAddEditTaskActivity.ListItem.WeekGroup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColorHint">@color/colorCharDark</item>
+    </style>
+    <!--ListItem,notification-->
+    <style name="TextApper.listViewAddEditTaskActivity.ListItem.NotificationTime">
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColorHint">@color/colorCharDark</item>
     </style>
