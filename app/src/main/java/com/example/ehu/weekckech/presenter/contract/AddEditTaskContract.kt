@@ -8,7 +8,7 @@ import com.example.ehu.weekckech.data.sql.TaskDataModel
 
 interface AddEditTaskContract {
     interface View : BaseView<AddEditTaskContract.Presenter> {
-        fun setTaskConfigEditRow(listItemModel: ArrayList<AddEditTaskItemModel>)
+        fun setTaskConfigEditRow(model: TaskDataModel)
         fun showTasksMain()
         fun showKeyboard()
     }
