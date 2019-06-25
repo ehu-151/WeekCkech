@@ -21,7 +21,7 @@ class AddEditTaskPresenter(private val addEditTaskView: AddEditTaskContract.View
 
     }
 
-    override fun loadTaskConfigEditRow(model: TaskDataModel?) {
+    override fun loadTaskConfigEditRow(model: TaskDataModel) {
         lists.add(AddEditTaskItemModel(R.id.edit_include_detail, R.drawable.ic_notes_white_24dp, AddEditTaskItemModel.EDITTEXT, hintText = "詳細", text = model?.detail
                 ?: ""))
         lists.add(AddEditTaskItemModel(R.id.edit_include_limittime, R.drawable.ic_access_time_white_24dp, AddEditTaskItemModel.TEXTVIEW, text = model?.limitTime

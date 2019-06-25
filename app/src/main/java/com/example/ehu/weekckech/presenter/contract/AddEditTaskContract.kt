@@ -15,7 +15,7 @@ interface AddEditTaskContract {
 
     interface Presenter : BasePresenter {
         fun saveTask(taskDataModel: TaskDataModel, mContext: Context)
-        fun loadTaskConfigEditRow(model: TaskDataModel?)
+        fun loadTaskConfigEditRow(model: TaskDataModel)
         fun getEditTaskData()
 //        fun setUpNotificaiton()
     }

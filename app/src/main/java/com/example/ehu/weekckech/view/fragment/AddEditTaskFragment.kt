@@ -44,7 +44,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         super.onViewCreated(view, savedInstanceState)
         // argsの取得
         val args = arguments
-        val model = args?.getSerializable(AddEditTaskActivity().EXTRA_TASK_ID) as TaskDataModel?
+        val model = args?.getSerializable(AddEditTaskActivity().EXTRA_TASK_ID) as TaskDataModel
 
         // Contextの格納
         mContext = view.context
