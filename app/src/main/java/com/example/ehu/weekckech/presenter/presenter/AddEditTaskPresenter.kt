@@ -42,7 +42,7 @@ class AddEditTaskPresenter(private val addEditTaskView: AddEditTaskContract.View
                     isChecked = taskDataModel.isChecked,
                     detail = taskDataModel.detail,
                     limitTime = taskDataModel.limitTime,
-                    notificationTime = taskDataModel.notificationTime,
+                    notificationTime = arrayListOf(taskDataModel.notificationTime ?: ""),
                     weekGroup = taskDataModel.weekGroup)
             runBlocking {
                 thread {
@@ -58,7 +58,7 @@ class AddEditTaskPresenter(private val addEditTaskView: AddEditTaskContract.View
                     isChecked = taskDataModel.isChecked,
                     detail = taskDataModel.detail,
                     limitTime = taskDataModel.limitTime,
-                    notificationTime = taskDataModel.notificationTime,
+                    notificationTime = arrayListOf(taskDataModel.notificationTime ?: ""),
                     weekGroup = taskDataModel.weekGroup)
             runBlocking {
                 thread {
