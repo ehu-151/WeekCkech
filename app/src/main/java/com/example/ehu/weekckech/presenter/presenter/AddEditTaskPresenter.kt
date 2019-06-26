@@ -12,14 +12,14 @@ import java.util.*
 import kotlin.concurrent.thread
 
 class AddEditTaskPresenter(private val addEditTaskView: AddEditTaskContract.View) : AddEditTaskContract.Presenter {
-    private lateinit var model: TaskDataModel
+    private var model: TaskDataModel? = null
 
 
     override fun getEditTaskData() {
 
     }
 
-    override fun loadTaskConfigEditRow(model: TaskDataModel) {
+    override fun loadTaskConfigEditRow(model: TaskDataModel?) {
         this.model = model
     }
 
@@ -63,7 +63,10 @@ class AddEditTaskPresenter(private val addEditTaskView: AddEditTaskContract.View
     }
 
     override fun start() {
-        addEditTaskView.setTaskConfigEditRow(model)
+        model?.let {
+            // nullなら実行しない
+            addEditTaskView.setTaskConfigEditRow(it)
+        }
     }
 
 }
