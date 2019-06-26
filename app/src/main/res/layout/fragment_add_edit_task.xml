@@ -119,13 +119,13 @@
                 app:layout_constraintStart_toEndOf="@+id/edit_save_button"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.button.MaterialButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/prev_item"
                 style="@style/MyButton"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/prev_item"
-                app:icon="@drawable/ic_keyboard_arrow_left"
+                android:src="@drawable/ic_keyboard_arrow_left"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/next_item"
@@ -133,14 +133,14 @@
                 app:layout_constraintStart_toEndOf="@+id/edit_leave_button"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.button.MaterialButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/next_item"
                 style="@style/MyButton"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/next_item"
-                app:icon="@drawable/ic_keyboard_arrow_right"
+                android:src="@drawable/ic_keyboard_arrow_right"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

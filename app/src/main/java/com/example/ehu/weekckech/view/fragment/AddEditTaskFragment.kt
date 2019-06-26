@@ -23,6 +23,7 @@ import com.example.ehu.weekckech.databinding.FragmentAddEditTaskBinding
 import com.example.ehu.weekckech.presenter.activity.AddEditTaskActivity
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
+import com.google.android.material.chip.Chip
 import kotlinx.coroutines.runBlocking
 import java.util.*
 
@@ -73,6 +74,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         binding.editIncludeLimittime.textView.setOnClickListener {
             showTimePicker()
         }
+        binding.editIncludeNotificationtime.addNotification.setOnClickListener {
+            onAddChip()
+        }
         binding.editLeaveButton.setOnClickListener { showTasksMain() }
 
         binding.nextItem.setOnClickListener { /*TODO Click処理*/ }
@@ -100,6 +104,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             adapter = itemAdapter
             setSelection(array.indexOf(model.weekGroup))
         }
+        // TODO:NotificationTimeもビューに描画する
     }
 
     override fun showTasksMain() {
@@ -144,6 +149,13 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
 
     private fun setLimitTime(limitTime: String) {
         binding.editIncludeLimittime.textView.text = limitTime
+    }
+
+    private fun onAddChip() {
+        val chip = Chip(context)
+        chip.text = "10分前"
+        chip.isCheckable=true
+        binding.editIncludeNotificationtime.chipGroup.addView(chip)
     }
 
     companion object {
