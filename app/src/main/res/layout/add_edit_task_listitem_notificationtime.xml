@@ -21,16 +21,21 @@
         <HorizontalScrollView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/edit_save_button"
+            app:layout_constraintEnd_toStartOf="@+id/add_notification"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.382">
 
             <com.google.android.material.chip.ChipGroup
-                style="@style/Widget.MaterialComponents.ChipGroup"
                 android:id="@+id/chip_group"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                style="@style/Widget.MaterialComponents.ChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
@@ -40,14 +45,15 @@
         </HorizontalScrollView>
 
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/add_notification"
-            style="@style/MyButton"
+            style="@style/MyOnlyImageButton"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_add_white_24dp"
+            app:icon="@drawable/ic_add_white_24dp"
+            app:iconGravity="textStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"

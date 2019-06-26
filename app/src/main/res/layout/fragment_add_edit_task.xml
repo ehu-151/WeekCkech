@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -119,29 +118,29 @@
                 app:layout_constraintStart_toEndOf="@+id/edit_save_button"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/prev_item"
-                style="@style/MyButton"
+                style="@style/MyOnlyImageButton"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/prev_item"
-                android:src="@drawable/ic_keyboard_arrow_left"
-                app:iconPadding="0dp"
+                app:icon="@drawable/ic_keyboard_arrow_left"
+                app:iconGravity="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/next_item"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/edit_leave_button"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/next_item"
-                style="@style/MyButton"
+                style="@style/MyOnlyImageButton"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/next_item"
-                android:src="@drawable/ic_keyboard_arrow_right"
-                app:iconPadding="0dp"
+                app:icon="@drawable/ic_keyboard_arrow_right"
+                app:iconGravity="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
