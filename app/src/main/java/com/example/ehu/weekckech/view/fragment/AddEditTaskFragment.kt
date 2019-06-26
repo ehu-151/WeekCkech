@@ -75,7 +75,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             showTimePicker()
         }
         binding.editIncludeNotificationtime.addNotification.setOnClickListener {
-            onAddChip()
+            showHourMuniteTimePicker()
         }
         binding.editLeaveButton.setOnClickListener { showTasksMain() }
 
@@ -147,13 +147,32 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
     }
 
+    private fun showHourMuniteTimePicker(){
+        class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
+            override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+                // Use the current time as the default values for the picker
+                val c = Calendar.getInstance()
+                val hour = c.get(Calendar.HOUR_OF_DAY)
+                val minute = c.get(Calendar.MINUTE)
+
+                // Create a new instance of TimePickerDialog and return it
+                return TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
+            }
+
+            override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
+                onAddChip("$hourOfDay:$minute")
+            }
+        }
+        TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
+    }
+
     private fun setLimitTime(limitTime: String) {
         binding.editIncludeLimittime.textView.text = limitTime
     }
 
-    private fun onAddChip() {
+    private fun onAddChip(text:String) {
         val chip = Chip(context)
-        chip.text = "10分前"
+        chip.text = text
         chip.isCheckable = true
         binding.editIncludeNotificationtime.chipGroup.addView(chip)
     }
