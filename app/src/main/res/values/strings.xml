@@ -13,6 +13,7 @@
         <item>土</item>
         <item>日</item>
     </string-array>
+    <string name="edit_notificationtime_init">通知時間を設定</string>
     <string name="day_of_week">曜</string>
     <string name="planed_numder">予定数</string>
     <string name="edit_activity_title">編集</string>

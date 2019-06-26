@@ -55,7 +55,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             // 値の取得
             val detail = binding.editIncludeDetail.editText.text.toString()
             val limitTime = binding.editIncludeLimittime.textView.text.toString()
-            val notificationTime = binding.editIncludeNotificationtime.spinner.selectedItem.toString()
+            // TODO:後で直す
+//            val notificationTime = binding.editIncludeNotificationtime.textView.text.toString()
+            val notificationTime = "30分前"
             val weekGroup = binding.editIncludeWeekgroup.spinner.selectedItem.toString()
 
             // 詳細が記入されているなら、save
