@@ -180,6 +180,14 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     }
 
     private fun onAddChip(text: String) {
+        val scrollView = binding.editIncludeNotificationtime.scrollView
+        val initText = binding.editIncludeNotificationtime.initText
+        // initTextが表示されていたら非表示にして、ScrollViewを表示する
+        if (initText.visibility == View.VISIBLE) {
+            initText.visibility = View.GONE
+            scrollView.visibility = View.VISIBLE
+        }
+        // Chipを追加
         val chip = Chip(context)
         chip.text = text
         chip.isCheckable = true
