@@ -147,20 +147,29 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
     }
 
-    private fun showHourMuniteTimePicker(){
+    private fun showHourMuniteTimePicker() {
         class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
             override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
                 // Use the current time as the default values for the picker
-                val c = Calendar.getInstance()
-                val hour = c.get(Calendar.HOUR_OF_DAY)
-                val minute = c.get(Calendar.MINUTE)
+                val hour = 0
+                val minute = 0
 
                 // Create a new instance of TimePickerDialog and return it
                 return TimePickerDialog(activity, this, hour, minute, DateFormat.is24HourFormat(activity))
             }
 
             override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
-                onAddChip("$hourOfDay:$minute")
+                val text = if (hourOfDay == 0 && minute == 0) {
+                    Toast.makeText(context, R.string.notification_warning_null, Toast.LENGTH_SHORT).show()
+                    return
+                } else if (hourOfDay == 0) {
+                    "${minute}分前"
+                } else if (minute == 0) {
+                    "${hourOfDay}時間前"
+                } else {
+                    "${hourOfDay}時間${minute}分前"
+                }
+                onAddChip(text)
             }
         }
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
@@ -170,7 +179,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         binding.editIncludeLimittime.textView.text = limitTime
     }
 
-    private fun onAddChip(text:String) {
+    private fun onAddChip(text: String) {
         val chip = Chip(context)
         chip.text = text
         chip.isCheckable = true
