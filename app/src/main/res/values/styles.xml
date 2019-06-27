@@ -137,7 +137,6 @@
     </style>
     <style name="TextApper.listViewAddEditTaskActivity.ListItem.NotificationTimeInit">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textColorHint">@color/colorCharDark</item>
     </style>
     <!--SpinnerItem-->
     <style name="TextApper.listViewAddEditTaskActivity.ListItem.SpinnerItem">
