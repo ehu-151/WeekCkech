@@ -117,7 +117,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         }
         // NotificationTime
         model.notificationTime?.forEach {
-            onAddChip(it)
+            onAddChip(it, false)
         }
     }
 
@@ -183,7 +183,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                 } else {
                     "${hourOfDay}時間${minute}分前"
                 }
-                onAddChip(text)
+                onAddChip(text, true)
             }
         }
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
@@ -193,7 +193,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         binding.editIncludeLimittime.textView.text = limitTime
     }
 
-    private fun onAddChip(text: String) {
+    private fun onAddChip(text: String, isShowToast: Boolean) {
         val scrollView = binding.editIncludeNotificationtime.scrollView
         val initText = binding.editIncludeNotificationtime.initText
         val chipGroup = binding.editIncludeNotificationtime.chipGroup
@@ -208,7 +208,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
 
         chipGroup.cancelLongPress()
         chipGroup.addView(setUpChip(chipGroup, text))
-        Toast.makeText(context, "「$text」が追加されました。\n「$text」をタップするとその時間に通知します。", Toast.LENGTH_LONG).show()
+        if (isShowToast) Toast.makeText(context, "「$text」が追加されました。\n「$text」をタップするとその時間に通知します。", Toast.LENGTH_LONG).show()
     }
 
     private fun setUpChip(chipGroup: ChipGroup, text: String): Chip {
