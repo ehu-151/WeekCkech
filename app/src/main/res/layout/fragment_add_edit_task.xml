@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -110,7 +109,7 @@
                 style="@style/MyButton"
                 android:layout_marginStart="24dp"
                 android:layout_weight="1"
-                android:text="@string/edot_leave_button"
+                android:text="@string/edit_leave_button"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/prev_item"
@@ -121,12 +120,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/prev_item"
-                style="@style/MyButton"
+                style="@style/MyOnlyImageButton"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/prev_item"
                 app:icon="@drawable/ic_keyboard_arrow_left"
-                app:iconPadding="0dp"
+                app:iconGravity="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/next_item"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -135,13 +134,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/next_item"
-                style="@style/MyButton"
+                style="@style/MyOnlyImageButton"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/next_item"
                 app:icon="@drawable/ic_keyboard_arrow_right"
-                app:iconPadding="0dp"
+                app:iconGravity="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
