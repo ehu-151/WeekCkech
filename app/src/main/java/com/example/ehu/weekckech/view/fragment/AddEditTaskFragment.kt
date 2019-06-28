@@ -117,7 +117,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         }
         // NotificationTime
         model.notificationTime?.forEach {
-            onAddChip(it, false)
+            onAddChip(it, isShowToast = false, isAllSelected = true)
         }
     }
 
@@ -193,7 +193,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         binding.editIncludeLimittime.textView.text = limitTime
     }
 
-    private fun onAddChip(text: String, isShowToast: Boolean) {
+    private fun onAddChip(text: String, isShowToast: Boolean, isAllSelected: Boolean = false) {
         val scrollView = binding.editIncludeNotificationtime.scrollView
         val initText = binding.editIncludeNotificationtime.initText
         val chipGroup = binding.editIncludeNotificationtime.chipGroup
@@ -207,17 +207,18 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         }
 
         chipGroup.cancelLongPress()
-        chipGroup.addView(setUpChip(chipGroup, text))
+        chipGroup.addView(setUpChip(chipGroup, text, isAllSelected))
         if (isShowToast) Toast.makeText(context, "「$text」が追加されました。\n「$text」をタップするとその時間に通知します。", Toast.LENGTH_LONG).show()
     }
 
-    private fun setUpChip(chipGroup: ChipGroup, text: String): Chip {
+    private fun setUpChip(chipGroup: ChipGroup, text: String, isAllSelected: Boolean): Chip {
         // Chipを追加
         val chip = Chip(context)
         chips.add(chip)
         chip.text = text
         chip.isCheckable = true
         chip.isCheckedIconVisible = false
+        chip.isSelected = isAllSelected
         // LongClickでCloseIconを表示
         chip.setOnLongClickListener {
             chips.forEach {
