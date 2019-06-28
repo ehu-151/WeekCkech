@@ -55,9 +55,11 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         // save
         binding.editSaveButton.setOnClickListener {
             // 値の取得
+            // detail
             val detail = binding.editIncludeDetail.editText.text.toString()
+            // LimitTime
             val limitTime = binding.editIncludeLimittime.textView.text.toString()
-            // TODO:後で直す
+            // WeekGroup
             var weekGroup: String = "月"
             for (i in 0 until binding.editIncludeWeekgroup.spinner.childCount) {
                 val chip = binding.editIncludeWeekgroup.spinner.getChildAt(i) as Chip
@@ -66,7 +68,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
                     break
                 }
             }
-            // TODO:後で直す
+            // NotificationTime
             val notificationTime = arrayListOf<String>()
             for (i in 0 until binding.editIncludeNotificationtime.chipGroup.childCount) {
                 val chip = binding.editIncludeNotificationtime.chipGroup.getChildAt(i) as Chip
@@ -109,15 +111,14 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             text = model.limitTime
         }
         // WeekGroup
-        // TODO:後で直す
-//        val itemAdapter = ArrayAdapter<String>(mContext, R.layout.spinner_item)
-//        val array = resources.getStringArray(R.array.edit_weekgroup_init)
-//        array.forEach { itemAdapter.add(it) }
-//        binding.editIncludeWeekgroup.spinner.apply {
-//            adapter = itemAdapter
-//            setSelection(array.indexOf(model.weekGroup))
-//        }
-        // TODO:NotificationTimeもビューに描画する
+        for (i in 0 until binding.editIncludeWeekgroup.spinner.childCount) {
+            val chip = binding.editIncludeWeekgroup.spinner.getChildAt(i) as Chip
+            if (chip.text.toString() == model.weekGroup) chip.isSelected = true
+        }
+        // NotificationTime
+        model.notificationTime?.forEach {
+            onAddChip(it)
+        }
     }
 
     override fun showTasksMain() {
