@@ -1,6 +1,6 @@
 <resources>
     <!--app-->
-    <string name="app_name">WeekCkech</string>
+    <string name="app_name">WeekCheck</string>
     <!--main-->
     <string name="tab_day">日</string>
     <string name="tab_week">週</string>
@@ -8,22 +8,22 @@
     <string name="no_detail">You type TODO detail on here.</string>
     <!--pager_week-->
     <string name="day_of_week">曜</string>
-    <string name="planed_numder">予定数</string>
+    <string name="planed_number">予定数</string>
     <!--add_edit_task-->
     <string name="edit_activity_title">編集</string>
     <string name="edit_detail_init">詳細</string>
     <string name="edit_limittime_init">12:00</string>
-    <string name="weekgroup_monday">月</string>
-    <string name="weekgroup_tuesday">火</string>
-    <string name="weekgroup_wednesday">水</string>
-    <string name="weekgroup_thursday">木</string>
-    <string name="weekgroup_friday">金</string>
-    <string name="weekgroup_saturday">土</string>
-    <string name="weekgroup_sunday">日</string>
+    <string name="weekgroup_mon">月</string>
+    <string name="weekgroup_tue">火</string>
+    <string name="weekgroup_wed">水</string>
+    <string name="weekgroup_thu">木</string>
+    <string name="weekgroup_fri">金</string>
+    <string name="weekgroup_sat">土</string>
+    <string name="weekgroup_sun">日</string>
     <string name="edit_notificationtime_init">通知時間を設定</string>
     <string name="notification_warning_null">無効な値です。</string>
     <string name="edit_save_button">保存する</string>
-    <string name="edot_leave_button">やめる</string>
+    <string name="edit_leave_button">やめる</string>
     <string name="next_item">前の項目に移動</string>
     <string name="prev_item">次の項目に移動</string>
 </resources>

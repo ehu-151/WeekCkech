@@ -36,43 +36,43 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/weekgroup_monday" />
+                android:text="@string/weekgroup_mon" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/weekgroup_tuesday" />
+                android:text="@string/weekgroup_tue" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/weekgroup_wednesday" />
+                android:text="@string/weekgroup_wed" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/weekgroup_thursday" />
+                android:text="@string/weekgroup_thu" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/weekgroup_friday" />
+                android:text="@string/weekgroup_fri" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/weekgroup_saturday" />
+                android:text="@string/weekgroup_sat" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/weekgroup_sunday" />
+                android:text="@string/weekgroup_sun" />
         </com.google.android.material.chip.ChipGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

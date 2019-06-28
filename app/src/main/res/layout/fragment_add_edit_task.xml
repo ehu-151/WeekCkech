@@ -109,7 +109,7 @@
                 style="@style/MyButton"
                 android:layout_marginStart="24dp"
                 android:layout_weight="1"
-                android:text="@string/edot_leave_button"
+                android:text="@string/edit_leave_button"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/prev_item"
