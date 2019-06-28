@@ -58,30 +58,25 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             val detail = binding.editIncludeDetail.editText.text.toString()
             val limitTime = binding.editIncludeLimittime.textView.text.toString()
             // TODO:後で直す
-            var weekGroup: String
-            for (i in 0..binding.editIncludeWeekgroup.spinner.childCount) {
+            var weekGroup: String = "月"
+            for (i in 0 until binding.editIncludeWeekgroup.spinner.childCount) {
                 val chip = binding.editIncludeWeekgroup.spinner.getChildAt(i) as Chip
                 if (chip.isChecked) {
                     weekGroup = chip.text.toString()
                     break
-                } else {
-                    weekGroup = ""
                 }
             }
             // TODO:後で直す
-            val notificationTime = mutableListOf<String>()
-            for (i in 0..binding.editIncludeNotificationtime.chipGroup.childCount) {
+            val notificationTime = arrayListOf<String>()
+            for (i in 0 until binding.editIncludeNotificationtime.chipGroup.childCount) {
                 val chip = binding.editIncludeNotificationtime.chipGroup.getChildAt(i) as Chip
                 if (chip.isChecked) notificationTime.add(chip.text.toString())
             }
 
             // 詳細が記入されているなら、save
             if (detail != "") {
-                // weekGroupをarrayList対応させる
-//                presenter.saveTask(TaskDataModel(taskId = model?.taskId, detail = detail, limitTime = limitTime,
-//                        notificationTime = notificationTime, weekGroup = weekGroup), mContext)
                 presenter.saveTask(TaskDataModel(taskId = model?.taskId, detail = detail, limitTime = limitTime,
-                        notificationTime = "30分前", weekGroup = "月"), mContext)
+                        notificationTime = notificationTime, weekGroup = weekGroup), mContext)
             } else {
                 Toast.makeText(mContext, "何も書かれていません。", Toast.LENGTH_SHORT).show()
             }
