@@ -51,6 +51,7 @@
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/chip_group"
                     style="@style/Widget.MaterialComponents.ChipGroup"
+                    app:singleLine="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

@@ -24,6 +24,7 @@ import com.example.ehu.weekckech.presenter.activity.AddEditTaskActivity
 import com.example.ehu.weekckech.presenter.contract.AddEditTaskContract
 import com.example.ehu.weekckech.presenter.presenter.AddEditTaskPresenter
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.runBlocking
 import java.util.*
 
@@ -34,6 +35,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     lateinit var mView: View
     lateinit var binding: FragmentAddEditTaskBinding
     override var presenter: AddEditTaskContract.Presenter = AddEditTaskPresenter(this)
+    private val chips = mutableListOf<Chip>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -182,16 +184,44 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     private fun onAddChip(text: String) {
         val scrollView = binding.editIncludeNotificationtime.scrollView
         val initText = binding.editIncludeNotificationtime.initText
+        val chipGroup = binding.editIncludeNotificationtime.chipGroup
         // initTextが表示されていたら非表示にして、ScrollViewを表示する
         if (initText.visibility == View.VISIBLE) {
             initText.visibility = View.GONE
             scrollView.visibility = View.VISIBLE
         }
+        chips.forEach {
+            if (it.isCloseIconVisible) it.isCloseIconVisible = false
+        }
+
+        chipGroup.cancelLongPress()
+        chipGroup.addView(setUpChip(chipGroup, text))
+        Toast.makeText(context, "「$text」が追加されました。\n「$text」をタップするとその時間に通知します。", Toast.LENGTH_LONG).show()
+    }
+
+    private fun setUpChip(chipGroup: ChipGroup, text: String): Chip {
         // Chipを追加
         val chip = Chip(context)
+        chips.add(chip)
         chip.text = text
         chip.isCheckable = true
-        binding.editIncludeNotificationtime.chipGroup.addView(chip)
+        chip.isCheckedIconVisible = false
+        // LongClickでCloseIconを表示
+        chip.setOnLongClickListener {
+            chips.forEach {
+                it.isCloseIconVisible = !it.isCloseIconVisible
+            }
+            true
+        }
+        // CloseIconでChipを削除
+        chip.setOnCloseIconClickListener {
+            onCloseChip(chipGroup, chip)
+        }
+        return chip
+    }
+
+    private fun onCloseChip(chipGroup: ChipGroup, chip: Chip) {
+        chipGroup.removeView(chip)
     }
 
     companion object {
