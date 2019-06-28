@@ -61,7 +61,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             // TODO:後で直す
 //            val notificationTime = binding.editIncludeNotificationtime.textView.text.toString()
             val notificationTime = "30分前"
-            val weekGroup = binding.editIncludeWeekgroup.spinner.selectedItem.toString()
+            // TODO:後で直す
+//            val weekGroup = binding.editIncludeWeekgroup.spinner.selectedItem.toString()
+            val weekGroup = "月"
 
             // 詳細が記入されているなら、save
             if (detail != "") {
@@ -99,13 +101,14 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             text = model.limitTime
         }
         // WeekGroup
-        val itemAdapter = ArrayAdapter<String>(mContext, R.layout.spinner_item)
-        val array = resources.getStringArray(R.array.edit_weekgroup_init)
-        array.forEach { itemAdapter.add(it) }
-        binding.editIncludeWeekgroup.spinner.apply {
-            adapter = itemAdapter
-            setSelection(array.indexOf(model.weekGroup))
-        }
+        // TODO:後で直す
+//        val itemAdapter = ArrayAdapter<String>(mContext, R.layout.spinner_item)
+//        val array = resources.getStringArray(R.array.edit_weekgroup_init)
+//        array.forEach { itemAdapter.add(it) }
+//        binding.editIncludeWeekgroup.spinner.apply {
+//            adapter = itemAdapter
+//            setSelection(array.indexOf(model.weekGroup))
+//        }
         // TODO:NotificationTimeもビューに描画する
     }
 
