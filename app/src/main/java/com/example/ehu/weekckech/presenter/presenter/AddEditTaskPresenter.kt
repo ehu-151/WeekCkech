@@ -19,7 +19,7 @@ class AddEditTaskPresenter(private val addEditTaskView: AddEditTaskContract.View
 
     }
 
-    override fun loadTaskConfigEditRow(model: TaskDataModel?) {
+    override fun loadTaskConfigEditRow(model: TaskDataModel) {
         this.model = model
     }
 
@@ -63,9 +63,10 @@ class AddEditTaskPresenter(private val addEditTaskView: AddEditTaskContract.View
     }
 
     override fun start() {
-        model?.let {
-            // nullなら実行しない
-            addEditTaskView.setTaskConfigEditRow(it)
+        if (model != null) {
+            addEditTaskView.setTaskConfigEditRow(model!!)
+        } else {
+            addEditTaskView.setTaskConfigInit()
         }
     }
 

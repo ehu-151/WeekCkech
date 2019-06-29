@@ -97,7 +97,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         binding.prevItem.setOnClickListener { /*TODO Click処理*/ }
 
         // 初期テキストのセット
-        presenter.loadTaskConfigEditRow(model)
+        model?.let {
+            presenter.loadTaskConfigEditRow(it)
+        }
         presenter.start()
     }
 
@@ -113,7 +115,8 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         // WeekGroup
         for (i in 0 until binding.editIncludeWeekgroup.spinner.childCount) {
             val chip = binding.editIncludeWeekgroup.spinner.getChildAt(i) as Chip
-            if (chip.text.toString() == model.weekGroup) chip.isChecked = true
+            // model.weekGroupと一致する曜日のみをCheckする
+            chip.isChecked = chip.text.toString() == model.weekGroup
         }
         // NotificationTime
         model.notificationTime?.forEach {
@@ -187,6 +190,10 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             }
         }
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
+    }
+
+    override fun setTaskConfigInit() {
+        binding.editIncludeWeekgroup.mon.isChecked = true // 初期セットは「月」
     }
 
     private fun setLimitTime(limitTime: String) {

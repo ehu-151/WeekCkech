@@ -10,11 +10,12 @@ interface AddEditTaskContract {
         fun setTaskConfigEditRow(model: TaskDataModel)
         fun showTasksMain()
         fun showKeyboard()
+        fun setTaskConfigInit()
     }
 
     interface Presenter : BasePresenter {
         fun saveTask(taskDataModel: TaskDataModel, mContext: Context)
-        fun loadTaskConfigEditRow(model: TaskDataModel?)
+        fun loadTaskConfigEditRow(model: TaskDataModel)
         fun getEditTaskData()
 //        fun setUpNotificaiton()
     }
