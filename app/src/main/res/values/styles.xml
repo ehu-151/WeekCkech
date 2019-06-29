@@ -13,22 +13,12 @@
         <!--メインの色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <!--<item name="colorPrimaryLight">@color/colorPrimaryLight</item>-->
-        <!--&lt;!&ndash;サブの色&ndash;&gt;-->
-        <!--<item name="colorSub">@color/colorSub</item>-->
-        <!--<item name="colorSubLight">@color/colorSubLight</item>-->
-        <!--直線を引くとき,TabLayoutのバー-->
         <item name="colorAccent">@color/colorAccent</item>
-        <!--文字の色-->
-        <!--<item name="colorChar">@color/colorChar</item>-->
-        <!--&lt;!&ndash;境界線の色&ndash;&gt;-->
-        <!--<item name="colorBorder">@color/colorBorder</item>-->
         <item name="android:timePickerDialogTheme">@style/TimePickerDialogTheme</item>
     </style>
-
+    <!--TimePicker-->
     <style name="TimePickerDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
-        <item name="colorAccent">@color/colorPrimary
-        </item> <!-- colorAccent here seems to work just fine? -->
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
     <!--共通-->
     <style name="TextApper">
