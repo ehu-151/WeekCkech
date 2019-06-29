@@ -32,7 +32,12 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
 
     override fun showDaysTasks(taskDataModel: MutableLiveData<ArrayList<TaskDataModel>>) {
         taskDataModel.observe(this, Observer {
-            binding.listView.adapter = TasksAdapter(mContext, it, presenter)
+            if (it.size == 0) {
+                showSwitchNoTaskWarning(true)
+            } else {
+                showSwitchNoTaskWarning(false)
+                binding.listView.adapter = TasksAdapter(mContext, it, presenter)
+            }
         })
     }
 
@@ -45,6 +50,17 @@ class MainPagerDayFragment : Fragment(), PagerDayConstract.View {
     }
 
     override fun showDayTasks() {
+
+    }
+
+    override fun showSwitchNoTaskWarning(isWarning: Boolean) {
+        if (isWarning) {
+            binding.listView.visibility = View.GONE
+            binding.noTaskWarningLayout.visibility = View.VISIBLE
+        } else {
+            binding.listView.visibility = View.VISIBLE
+            binding.noTaskWarningLayout.visibility = View.GONE
+        }
 
     }
 

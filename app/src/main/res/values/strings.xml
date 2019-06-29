@@ -6,6 +6,8 @@
     <string name="tab_week">週</string>
     <!--pager_day-->
     <string name="no_detail">You type TODO detail on here.</string>
+    <string name="no_task_warning">タスクはありません</string>
+    <string name="no_task_please_add">タスクを追加してください</string>
     <!--pager_week-->
     <string name="day_of_week">曜</string>
     <string name="planed_number">予定数</string>
