@@ -137,11 +137,14 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
     override fun showKeyboard() {
         // 100だと、キーボードが表示されない
         runBlocking {
-            binding.editIncludeDetail.editText.postDelayed(Runnable {
-                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                binding.editIncludeDetail.editText.requestFocus()
-                imm.showSoftInput(binding.editIncludeDetail.editText, 0)
-            }, 200)
+            binding.editIncludeDetail.editText.apply {
+                postDelayed({
+                    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    requestFocus()
+                    setSelection(this.text.length)
+                    imm.showSoftInput(this, 0)
+                }, 200)
+            }
         }
     }
 
