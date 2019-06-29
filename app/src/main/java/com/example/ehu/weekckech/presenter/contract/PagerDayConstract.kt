@@ -11,6 +11,7 @@ interface PagerDayConstract {
         fun showAddTask()
         fun showEditTask(model: TaskDataModel)
         fun showDayTasks()
+        fun showSwitchNoTaskWarning(isWarning: Boolean)
     }
 
     interface Presenter : BasePresenter {
