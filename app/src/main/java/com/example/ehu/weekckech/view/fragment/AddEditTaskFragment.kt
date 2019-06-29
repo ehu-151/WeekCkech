@@ -60,7 +60,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             // LimitTime
             val limitTime = binding.editIncludeLimittime.textView.text.toString()
             // WeekGroup
-            var weekGroup: String = "月"
+            var weekGroup = "月"
             for (i in 0 until binding.editIncludeWeekgroup.spinner.childCount) {
                 val chip = binding.editIncludeWeekgroup.spinner.getChildAt(i) as Chip
                 if (chip.isChecked) {
@@ -218,7 +218,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         chip.text = text
         chip.isCheckable = true
         chip.isCheckedIconVisible = false
-        chip.isSelected = isAllSelected
+        chip.isChecked = isAllSelected
         // LongClickでCloseIconを表示
         chip.setOnLongClickListener {
             chips.forEach {
