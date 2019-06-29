@@ -72,7 +72,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             val notificationTime = arrayListOf<String>()
             for (i in 0 until binding.editIncludeNotificationtime.chipGroup.childCount) {
                 val chip = binding.editIncludeNotificationtime.chipGroup.getChildAt(i) as Chip
-                if (chip.isChecked) notificationTime.add(chip.text.toString())
+                notificationTime.add(chip.text.toString())
             }
 
             // 詳細が記入されているなら、save
@@ -120,7 +120,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         }
         // NotificationTime
         model.notificationTime?.forEach {
-            onAddChip(it, isShowToast = false, isAllSelected = true)
+            onAddChip(it, false)
         }
     }
 
@@ -203,7 +203,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         binding.editIncludeLimittime.textView.text = limitTime
     }
 
-    private fun onAddChip(text: String, isShowToast: Boolean, isAllSelected: Boolean = false) {
+    private fun onAddChip(text: String, isShowToast: Boolean) {
         val scrollView = binding.editIncludeNotificationtime.scrollView
         val initText = binding.editIncludeNotificationtime.initText
         val chipGroup = binding.editIncludeNotificationtime.chipGroup
@@ -217,29 +217,30 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         }
 
         chipGroup.cancelLongPress()
-        chipGroup.addView(setUpChip(chipGroup, text, isAllSelected))
+        chipGroup.addView(setUpChip(chipGroup, text))
         if (isShowToast) Toast.makeText(context, "「$text」が追加されました。\n「$text」をタップするとその時間に通知します。", Toast.LENGTH_LONG).show()
     }
 
-    private fun setUpChip(chipGroup: ChipGroup, text: String, isAllSelected: Boolean): Chip {
+    private fun setUpChip(chipGroup: ChipGroup, chipText: String): Chip {
         // Chipを追加
-        val chip = Chip(context)
-        chips.add(chip)
-        chip.text = text
-        chip.isCheckable = true
-        chip.isCheckedIconVisible = false
-        chip.isChecked = isAllSelected
-        // LongClickでCloseIconを表示
-        chip.setOnLongClickListener {
-            chips.forEach {
-                it.isCloseIconVisible = !it.isCloseIconVisible
+        val chip = Chip(context).apply {
+            text = chipText
+            isCheckable = true
+            isCheckedIconVisible = false
+            isCheckable = false
+            // LongClickでCloseIconを表示
+            setOnLongClickListener {
+                chips.forEach {
+                    it.isCloseIconVisible = !it.isCloseIconVisible
+                }
+                true
             }
-            true
+            // CloseIconでChipを削除
+            setOnCloseIconClickListener {
+                onCloseChip(chipGroup, this)
+            }
         }
-        // CloseIconでChipを削除
-        chip.setOnCloseIconClickListener {
-            onCloseChip(chipGroup, chip)
-        }
+        chips.add(chip)
         return chip
     }
 
