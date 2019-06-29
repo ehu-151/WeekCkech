@@ -113,7 +113,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         // WeekGroup
         for (i in 0 until binding.editIncludeWeekgroup.spinner.childCount) {
             val chip = binding.editIncludeWeekgroup.spinner.getChildAt(i) as Chip
-            if (chip.text.toString() == model.weekGroup) chip.isSelected = true
+            if (chip.text.toString() == model.weekGroup) chip.isChecked = true
         }
         // NotificationTime
         model.notificationTime?.forEach {
