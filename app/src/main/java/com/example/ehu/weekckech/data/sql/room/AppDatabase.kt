@@ -12,7 +12,7 @@ import java.util.*
 @TypeConverters(DateTimeConverter::class, ArrayListStringConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
-        const val DB_NAME = "todo-database"
+        const val DB_NAME = "todo-database-0.1"
 
     }
 
