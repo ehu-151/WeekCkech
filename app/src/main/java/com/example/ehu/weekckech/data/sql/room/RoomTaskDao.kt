@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface RoomTaskDao {
     // get
-    @Query("SELECT * FROM roomtask ORDER BY weekGroup ASC")
+    @Query("SELECT * FROM roomtask ORDER BY weekGroup ASC,limitTime ASC")
     fun getAll(): List<RoomTask>
 
 //    @Query("SELECT * FROM roomtask WHERE taskId IN (:taskId)")

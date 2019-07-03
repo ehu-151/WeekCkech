@@ -161,7 +161,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             }
 
             override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
-                setLimitTime("$hourOfDay:$minute")
+                val hour = String.format("%02d", hourOfDay)
+                val min = String.format("%02d", minute)
+                setLimitTime("$hour:$min")
             }
         }
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")
