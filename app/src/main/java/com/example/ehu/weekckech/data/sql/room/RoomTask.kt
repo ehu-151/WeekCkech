@@ -19,5 +19,5 @@ data class RoomTask(
 
         val notificationTime: ArrayList<String>? = null,
 
-        val weekGroup: String
+        val weekGroup: Int
 )

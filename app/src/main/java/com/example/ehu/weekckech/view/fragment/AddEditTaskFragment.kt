@@ -60,11 +60,11 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             // LimitTime
             val limitTime = binding.editIncludeLimittime.textView.text.toString()
             // WeekGroup
-            var weekGroup = "月"
+            var weekGroup = 0
             for (i in 0 until binding.editIncludeWeekgroup.spinner.childCount) {
                 val chip = binding.editIncludeWeekgroup.spinner.getChildAt(i) as Chip
                 if (chip.isChecked) {
-                    weekGroup = chip.text.toString()
+                    weekGroup = chip.tag.toString().toInt()
                     break
                 }
             }
@@ -116,7 +116,7 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
         for (i in 0 until binding.editIncludeWeekgroup.spinner.childCount) {
             val chip = binding.editIncludeWeekgroup.spinner.getChildAt(i) as Chip
             // model.weekGroupと一致する曜日のみをCheckする
-            chip.isChecked = chip.text.toString() == model.weekGroup
+            chip.isChecked = chip.tag.toString().toInt() == model.weekGroup
         }
         // NotificationTime
         model.notificationTime?.forEach {
@@ -161,7 +161,9 @@ class AddEditTaskFragment : Fragment(), AddEditTaskContract.View {
             }
 
             override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
-                setLimitTime("$hourOfDay:$minute")
+                val hour = String.format("%02d", hourOfDay)
+                val min = String.format("%02d", minute)
+                setLimitTime("$hour:$min")
             }
         }
         TimePickerFragment().show((activity as FragmentActivity).supportFragmentManager, "TAG")

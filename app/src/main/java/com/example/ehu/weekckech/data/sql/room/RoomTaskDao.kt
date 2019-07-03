@@ -5,28 +5,28 @@ import androidx.room.*
 @Dao
 interface RoomTaskDao {
     // get
-    @Query("SELECT * FROM roomtask ORDER BY weekGroup ASC")
+    @Query("SELECT * FROM roomtask ORDER BY weekGroup ASC,limitTime ASC")
     fun getAll(): List<RoomTask>
 
-    @Query("SELECT * FROM roomtask WHERE taskId IN (:taskId)")
-    fun getAllByIds(taskId: List<Int>): List<RoomTask>
+//    @Query("SELECT * FROM roomtask WHERE taskId IN (:taskId)")
+//    fun getAllByIds(taskId: List<Int>): List<RoomTask>
 
-    @Query("SELECT * FROM roomtask WHERE weekGroup IN (:weekGroup)")
-    fun getByWeekGroup(weekGroup: List<String>): RoomTask
+//    @Query("SELECT * FROM roomtask WHERE weekGroup IN (:weekGroup)")
+//    fun getByWeekGroup(weekGroup: List<String>): RoomTask
 
-    @Query("SELECT * FROM roomtask WHERE detail LIKE :detail")
-    fun searchLikeDetail(detail: String): RoomTask
+//    @Query("SELECT * FROM roomtask WHERE detail LIKE :detail")
+//    fun searchLikeDetail(detail: String): RoomTask
 
-    @Query("SELECT * FROM roomtask WHERE isChecked LIKE :isChecked")
-    fun getChecked(isChecked: Boolean): List<RoomTask>
+//    @Query("SELECT * FROM roomtask WHERE isChecked LIKE :isChecked")
+//    fun getChecked(isChecked: Boolean): List<RoomTask>
 
 
     // insert
     @Insert
     fun insert(roomTask: RoomTask)
 
-    @Insert
-    fun insertAll(vararg roomTask: RoomTask)
+//    @Insert
+//    fun insertAll(vararg roomTask: RoomTask)
 
     // update
     @Update
@@ -36,6 +36,6 @@ interface RoomTaskDao {
     fun changeTaskCheck(taskId: Int, isChecked: Boolean)
 
     // delete
-    @Delete
-    fun delete(roomTask: RoomTask)
+//    @Delete
+//    fun delete(roomTask: RoomTask)
 }
